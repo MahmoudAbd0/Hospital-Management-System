@@ -1,0 +1,237 @@
+$blueColor : #3c8ec8;
+$whiteColor : #fff;
+$gray : #f5f5f5;
+$black1 : #222;
+$black2 : #999;
+
+
+.contain
+{
+    position: relative;
+    width: 100%;
+}
+.navigation
+{
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background-color: $blueColor;
+    border-left: 10px solid $blueColor;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.navigation.active
+{
+    width: 70px;
+
+}
+
+
+.navigation ul
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.navigation ul li
+{
+    position: relative;
+    width: 100%;
+    list-style-type: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.navigation ul li:hover{
+    background-color: $whiteColor;
+}
+.navigation ul li:nth-child(1)
+{
+    margin-bottom: 20px;
+    pointer-events: none;
+}
+.navigation ul li a
+{
+    position: relative;
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    color:$whiteColor
+}
+.navigation ul li:hover a{
+    color :$blueColor
+}
+.navigation ul li a .icaons
+{
+    position: relative;
+    display: block;
+    min-width: 50px;
+    height: 60px;
+    line-height: 75px;
+    text-align: center;
+}
+.navigation ul li a .icaons svg
+{
+    font-size: 1.2rem;
+}
+.navigation ul li a .title
+{
+    position: relative;
+    display: block;
+    padding: 6px 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+.navigation ul li:hover a::before
+{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    box-shadow: 35px 35px 0 10px $whiteColor;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.navigation ul li:hover a::after
+{
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    box-shadow: 35px -35px 0 10px $whiteColor;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+
+
+body
+{
+    font-family: 'segoe ui light';
+}
+nav .col-sm-2 {
+    background-color: aquamarine;
+    min-height: 100vh;
+}
+nav .brand
+{
+    font-size: 16px;
+    font-weight: 800;
+}
+.underline
+{
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    margin: 10px 0;
+}
+nav .col-sm-2 svg
+{
+    font-size: 12px !important;
+    margin-right: 7px;
+}
+
+
+.main
+{
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background-color: $whiteColor;
+    transition: 0.5s;
+}
+.main.active
+{
+    width: calc(100% - 70px);
+    left: 70px;
+}
+.topbar
+{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px
+}
+
+.toggle
+{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
+.search
+{
+    position: relative;
+    width: 400px;
+    margin:0 10px;
+}
+
+.search label{
+    position: relative;
+    width: 100%;
+}
+.search label input
+{
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid $black2;
+}
+.search label svg{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.2rem;
+}
+
+.user
+{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+.user  img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.routerOutlet
+{
+    position: relative;
+    left: 300px;
+    top: 65px;
+    width: calc(100% - 300px);
+    height: calc(100vh - 65px);
+}
