@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,8 +11,9 @@ import { DoctorComponent } from './components/doctor/doctor.component';
 import { ReceptionistComponent } from './components/receptionist/receptionist.component';
 import { ReservationsComponent } from './components/reservations/reservations.component';
 import { FormsModule } from '@angular/forms';
-import { RoomReservationsComponent } from './room-reservations/room-reservations.component';
-import { DepartmentsComponent } from './departments/departments.component'
+import { RoomReservationsComponent } from './components/room-reservations/room-reservations.component';
+import { DepartmentsComponent } from './components/departments/departments.component';
+import { RoomsComponent } from './components/rooms/rooms.component'
 
 
 
@@ -23,12 +26,15 @@ import { DepartmentsComponent } from './departments/departments.component'
     ReceptionistComponent,
     ReservationsComponent,
     RoomReservationsComponent,
-    DepartmentsComponent
+    DepartmentsComponent,
+    RoomsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule],
+    FormsModule,
+    FullCalendarModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
