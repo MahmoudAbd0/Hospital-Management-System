@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ShiftRequest;
 use App\Models\Shift;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,7 @@ class ShiftController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ShiftRequest $request)
     {
         $shift= new Shift;
         $shift->name=$request->name;
@@ -33,9 +34,11 @@ class ShiftController extends Controller
         $shift->start_time=$request->start_time;
         $shift->end_time=$request->end_time;
         $shift->save();
+
         return response()->json(['message'=>'created successfully','shift'=>$shift]);
 
     }
+
 
     /**
      * Display the specified resource.
@@ -61,9 +64,8 @@ class ShiftController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Shift $shift)
+    public function update(ShiftRequest $request,Shift $shift)
     {
-
         $shift->name=$request->name;
         $shift->days=$request->days;
         $shift->start_time=$request->start_time;
