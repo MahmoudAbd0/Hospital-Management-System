@@ -1,0 +1,39 @@
+<div class="main">
+    <div class="container">
+        <form class="row g-3">
+            <div class="col-md-6">
+                <label for="inputPatient" class="form-label">Choose Patient</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Select Patient Name</option>
+                    <option value="1">Ahmed</option>
+                    <option value="2">Mohamed</option>
+                    <option value="3">Ali</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="inputDate" class="form-label">Reservation Date</label>
+                <input class="form-control" type="date" [(ngModel)]="selectedDate">
+            </div>
+            <div class="col-md-3">
+                <label for="inputTIme" class="form-label">Time</label>
+                <input class="form-control" type="time" [(ngModel)]="selectedHour" (change)="handleHourChange($event)">
+            </div>
+            <div class="col-md-6">
+                <label for="inputRoom" class="form-label">Choose Room</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Select Room</option>
+                    <option value="1">Room 1</option>
+                    <option value="2">Room 2</option>
+                    <option value="3">Room 3</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Price</label>
+                <input class="form-select" class="form-control">
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Reserve Room</button>
+            </div>
+        </form>
+    </div>
+</div>

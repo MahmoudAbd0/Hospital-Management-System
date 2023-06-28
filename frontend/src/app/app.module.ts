@@ -7,6 +7,12 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { ReceptionistComponent } from './components/receptionist/receptionist.component';
+import { ReservationsComponent } from './components/reservations/reservations.component';
+import { FormsModule } from '@angular/forms';
+import { RoomReservationsComponent } from './room-reservations/room-reservations.component';
+import { DepartmentsComponent } from './departments/departments.component'
+
+
 
 @NgModule({
   declarations: [
@@ -14,12 +20,15 @@ import { ReceptionistComponent } from './components/receptionist/receptionist.co
     SidebarComponent,
     AdminComponent,
     DoctorComponent,
-    ReceptionistComponent
+    ReceptionistComponent,
+    ReservationsComponent,
+    RoomReservationsComponent,
+    DepartmentsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
+    AppRoutingModule,
+    FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
