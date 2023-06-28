@@ -1,73 +1,188 @@
-
+<div class="search mb-1 d-flex w-100">
+    <label for="" class="text-center">
+        <input type="text" placeholder="Search BY Name">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </label>
+    <p class="text-end me-3">
+        <button class="btn btn-info text-white" (click)="showAddBox()"> <i class="fa fa-plus-circle"  aria-hidden="true"></i></button>
+    </p>
+</div>
 <div class="container">
-    <h4 class="mb-3"><b>Available Doctors 12</b></h4>
+    <!-- <h4 class="mb-3"><b>Available Doctors 12</b></h4> -->
     <div class="row">
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" *ngFor = "let doctor of doctors| paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
             <div class="card">
                 <div class="card-body">
-                    <img src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                    <h5 class="card-title">Ahmed Mahmoud</h5>
-                    <span>Department</span>
+                    <img [src]="doctor.image" alt="">
                     <br>
-                    <span>Saturday and Monday from 7 to 10</span>
+                    <span class="card-title me-3"><b>Name: </b>{{doctor.name}}</span>
+                    <span class="card-title "><b>email: </b>{{doctor.email}}</span>
+                    <br>
+                    <span class="card-title me-3"><b>password: </b>{{doctor.password}}</span>
+                    <span><b>Department: </b>{{doctor.department}}</span>
+                    <br>
+                    <span><b>phone: </b>{{doctor.phone}}</span>
+                    <br>
+                    <div class="action mt-2">
+                        <a (click)="showUpdateBox(doctor.id)"  class=" me-3"><i class="fa fa-edit"></i></a>
+                    <a  (click)="showDeleteBox(doctor.id)" class=""><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                    </div>
                 </div>
             </div>
         </div> 
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <img src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                    <h5 class="card-title">Ahmed Mahmoud</h5>
-                    <span>Department</span>
-                    <br>
-                    <span>Saturday and Monday from 7 to 10</span>
-                </div>
-            </div>
-        </div> 
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <img src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                    <h5 class="card-title">Ahmed Mahmoud</h5>
-                    <span>Department</span>
-                    <br>
-                    <span>Saturday and Monday from 7 to 10</span>
-                </div>
-            </div>
-        </div> 
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <img src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                    <h5 class="card-title">Ahmed Mahmoud</h5>
-                    <span>Department</span>
-                    <br>
-                    <span>Saturday and Monday from 7 to 10</span>
-                </div>
-            </div>
-        </div> 
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <img src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                    <h5 class="card-title">Ahmed Mahmoud</h5>
-                    <span>Department</span>
-                    <br>
-                    <span>Saturday and Monday from 7 to 10</span>
-                </div>
-            </div>
-        </div> 
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <img src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                    <h5 class="card-title">Ahmed Mahmoud</h5>
-                    <span>Department</span>
-                    <br>
-                    <span>Saturday and Monday from 7 to 10</span>
-                </div>
-            </div>
-        </div> 
+        <div class="text-center paginationNav mt-2">
+            <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+        </div>
     </div>
-       
+</div>
+
+<div class="layer position-absolute position-relative px-5 py-3 rounded text-center" id="layer">
+    <a (click)="closeAddBox()" class="position-absolute close">
+        <i class="fa fa-close fs-5"></i>
+    </a>
+    <h4 class="mt-5">Add New Doctor</h4>
+    <form  [formGroup]="addDoctor" (ngSubmit)="addNewDoctor()" class="py-4">
+       <div class="d-flex">
+        <div class="form-group mb-4 me-4">
+            <input type="text" class="form-control my-2 bg-transparent" placeholder="Enter Admin Name" formControlName="name">
+            <div *ngIf="addDoctor.controls['name'].errors&& addDoctor.controls['name'].touched ">
+                <span *ngIf="addDoctor.controls['name'].errors?.['required']!==undefined" class="text-danger">Name is required</span>
+                <span *ngIf="addDoctor.controls['name'].errors?.['minlength']" class="text-danger">Min length must be 3</span>
+                <span *ngIf="addDoctor.controls['name'].errors?.['maxlength']" class="text-danger">Max length must be 20</span>
+            </div>
+        </div>
+
+        <div class="form-group mb-4">
+            <!-- <label for="">Email:</label> -->
+            <input type="email" class="form-control my-2 bg-transparent" placeholder="Enter your email" formControlName="email">
+            <div *ngIf="addDoctor.controls['email'].errors&& addDoctor.controls['email'].touched ">
+                <span *ngIf="addDoctor.controls['email'].errors?.['required']!==undefined" class="text-danger">Email is required</span>
+                <span *ngIf="!addDoctor.controls['email'].errors?.['required'] && addDoctor.controls['email'].errors!=null " class="text-danger">Email not valid </span>   
+            </div>
+        </div>
+       </div>
+        <div class="d-flex">
+            <div class="form-group mb-4 me-3">
+                <input type="text" class="form-control my-2 bg-transparent" placeholder="Enter Department" formControlName="department">
+                <div *ngIf="addDoctor.controls['department'].errors&& addDoctor.controls['department'].touched ">
+                    <span *ngIf="addDoctor.controls['department'].errors?.['required']!==undefined" class="text-danger">department is required</span>
+                    <span *ngIf="addDoctor.controls['department'].errors?.['minlength']" class="text-danger">Min length must be 3</span>
+                    <span *ngIf="addDoctor.controls['department'].errors?.['maxlength']" class="text-danger">Max length must be 20</span>
+                </div>
+            </div>
+            <div class="form-group mb-4">
+                <!-- <label for="">Password:</label> -->
+                <input type="password" class="form-control my-2 bg-transparent" placeholder="Enter password" formControlName="password">
+                <div *ngIf="addDoctor.controls['password'].errors&& addDoctor.controls['password'].touched ">
+                    <span *ngIf="addDoctor.controls['password'].errors?.['required']!==undefined" class="text-danger">password is required</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <select id="" value="Doctor"  class="form-control my-2 bg-transparent" formControlName="Role">
+                <option selected value="Doctor">Doctor</option>
+                <option disabled value="Admin">Admin</option>
+                <option disabled value="Receptionist">Receptionist</option>
+                <option disabled value="Patient">Patient</option>
+            </select>
+        </div>
+        <div class="form-group mb-4">
+            <!-- <label for="">Password:</label> -->
+            <input type="number" class="form-control my-2 bg-transparent" placeholder="Enter Phone" formControlName="phone">
+            <div *ngIf="addDoctor.controls['phone'].errors&& addDoctor.controls['phone'].touched ">
+                <span *ngIf="addDoctor.controls['phone'].errors?.['required']!==undefined" class="text-danger">phone is required</span>
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <input type="file" class="form-control my-2 bg-transparent" formControlName="image">
+            <div *ngIf="addDoctor.controls['image'].errors&& addDoctor.controls['image'].touched ">
+                <span *ngIf="addDoctor.controls['image'].errors?.['required']" class="text-danger">Image is required</span> 
+            </div>
+        </div>
+        <button [disabled]="addDoctor.status=='INVALID'"  type="submit" class="btn">Add Admin</button>
+        
+    </form>
+</div>
+
+
+
+
+<div class="updatelayer position-absolute position-relative px-5 py-3 rounded text-center" id="updatelayer">
+    <a (click)="closeUpdateBox()" class="position-absolute close">
+        <i class="fa fa-close fs-5"></i>
+    </a>
+    <h4 class="mt-4">Update Doctor</h4>
+    
+    <form  [formGroup]="updateDoctor" (ngSubmit)="updateOneAdmin()" class="py-4">
+        <div class="d-flex">
+         <div class="form-group mb-4 me-4">
+             <input type="text" class="form-control my-2 bg-transparent" placeholder="Enter Admin Name" formControlName="name">
+             <div *ngIf="updateDoctor.controls['name'].errors&& updateDoctor.controls['name'].touched ">
+                 <span *ngIf="updateDoctor.controls['name'].errors?.['required']!==undefined" class="text-danger">Name is required</span>
+                 <span *ngIf="updateDoctor.controls['name'].errors?.['minlength']" class="text-danger">Min length must be 3</span>
+                 <span *ngIf="updateDoctor.controls['name'].errors?.['maxlength']" class="text-danger">Max length must be 20</span>
+             </div>
+         </div>
+ 
+         <div class="form-group mb-4">
+             <!-- <label for="">Email:</label> -->
+             <input type="email" class="form-control my-2 bg-transparent" placeholder="Enter your email" formControlName="email">
+             <div *ngIf="updateDoctor.controls['email'].errors&& updateDoctor.controls['email'].touched ">
+                 <span *ngIf="updateDoctor.controls['email'].errors?.['required']!==undefined" class="text-danger">Email is required</span>
+                 <span *ngIf="!updateDoctor.controls['email'].errors?.['required'] && updateDoctor.controls['email'].errors!=null " class="text-danger">Email not valid </span>   
+             </div>
+         </div>
+        </div>
+         <div class="d-flex">
+             <div class="form-group mb-4 me-3">
+                 <input type="text" class="form-control my-2 bg-transparent" placeholder="Enter Department" formControlName="department">
+                 <div *ngIf="updateDoctor.controls['department'].errors&& updateDoctor.controls['department'].touched ">
+                     <span *ngIf="updateDoctor.controls['department'].errors?.['required']!==undefined" class="text-danger">department is required</span>
+                     <span *ngIf="updateDoctor.controls['department'].errors?.['minlength']" class="text-danger">Min length must be 3</span>
+                     <span *ngIf="updateDoctor.controls['department'].errors?.['maxlength']" class="text-danger">Max length must be 20</span>
+                 </div>
+             </div>
+             <div class="form-group mb-4">
+                 <!-- <label for="">Password:</label> -->
+                 <input type="password" class="form-control my-2 bg-transparent" placeholder="Enter password" formControlName="password">
+                 <div *ngIf="updateDoctor.controls['password'].errors&& updateDoctor.controls['password'].touched ">
+                     <span *ngIf="updateDoctor.controls['password'].errors?.['required']!==undefined" class="text-danger">password is required</span>
+                 </div>
+             </div>
+         </div>
+         <div class="form-group mb-4">
+             <select id="" value="Doctor"  class="form-control my-2 bg-transparent" formControlName="Role">
+                 <option selected value="Doctor">Doctor</option>
+                 <option disabled value="Admin">Admin</option>
+                 <option disabled value="Receptionist">Receptionist</option>
+                 <option disabled value="Patient">Patient</option>
+             </select>
+         </div>
+         <div class="form-group mb-4">
+             <!-- <label for="">Password:</label> -->
+             <input type="number" class="form-control my-2 bg-transparent" placeholder="Enter Phone" formControlName="phone">
+             <div *ngIf="updateDoctor.controls['phone'].errors&& updateDoctor.controls['phone'].touched ">
+                 <span *ngIf="updateDoctor.controls['phone'].errors?.['required']!==undefined" class="text-danger">phone is required</span>
+             </div>
+         </div>
+         <div class="form-group mb-4">
+             <input type="file" class="form-control my-2 bg-transparent" formControlName="image">
+             <div *ngIf="updateDoctor.controls['image'].errors&& updateDoctor.controls['image'].touched ">
+                 <span *ngIf="updateDoctor.controls['image'].errors?.['required']" class="text-danger">Image is required</span> 
+             </div>
+         </div>
+         <button [disabled]="updateDoctor.status=='INVALID'"  type="submit" class="btn">Update Doctor</button>
+         
+     </form>
+</div> 
+
+
+<div class="deletePopUp text-center" id="deletedLayer">
+    <a (click)="closeDeleteBox()" class="position-absolute close">
+        <i class="fa fa-close fs-5"></i>
+    </a>
+    <h4 class="mt-4">Are You Sure To Delete</h4>
+    <div class="buttons mt-3">
+        <button (click)="delete()" class="btn btn-info me-3 text-white">Ok</button>
+    </div>
 </div>
