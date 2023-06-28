@@ -1,154 +1,159 @@
-
-<div class="cardBox">
-    <div class="cards">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Number Of Department</h5>
-                            <p class="card-text">20</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Number Of Doctors</h5>
-                            <p class="card-text">40</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Number Of Patient</h5>
-                            <p class="card-text">70</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Number Of Rooms</h5>
-                            <p class="card-text">50</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="search">
+    <label for="">
+        <input type="text" placeholder="Search BY Name">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </label>
+</div>
+<div class="container">
+    <p class="text-end me-3">
+        <button class="btn btn-info text-white" (click)="showAddBox()"> Add Admin</button>
+    </p>
+    <table class="table table-bordered mt-2 text-center">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let user of users| paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+                <td>{{user.name}}</td>
+                <td>
+                    <img style="width: 50px;" [src]="user.image" alt="">
+                </td>
+                <td>
+                    {{user.email}}
+                </td>
+                <td>
+                    {{user.Role}}
+                </td>
+                <td>
+                    <button (click)="showUpdateBox(user.id)" class="btn btn-warning me-3">Edit</button>
+                    <button (click)="showDeleteBox(user.id)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+      <div class="text-center paginationNav mt-2">
+        <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
     </div>
 </div>
 
 
-<div class="container mt-3">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Role</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Aya</td>
-                <td>
-                    <img style="width: 50px;" src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                </td>
-                <td>
-                    aya@gmail.com
-                </td>
-                <td>
-                    010212211121
-                </td>
-                <td>
-                    Doctor
-                </td>
-                <td>
-                    <button class="btn btn-warning me-3">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Aya</td>
-                <td>
-                    <img style="width: 50px;" src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                </td>
-                <td>
-                    aya@gmail.com
-                </td>
-                <td>
-                    010212211121
-                </td>
-                <td>
-                    Doctor
-                </td>
-                <td>
-                    <button class="btn btn-warning me-3">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Aya</td>
-                <td>
-                    <img style="width: 50px;" src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                </td>
-                <td>
-                    aya@gmail.com
-                </td>
-                <td>
-                    010212211121
-                </td>
-                <td>
-                    Doctor
-                </td>
-                <td>
-                    <button class="btn btn-warning me-3">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Aya</td>
-                <td>
-                    <img style="width: 50px;" src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                </td>
-                <td>
-                    aya@gmail.com
-                </td>
-                <td>
-                    010212211121
-                </td>
-                <td>
-                    Doctor
-                </td>
-                <td>
-                    <button class="btn btn-warning me-3">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Aya</td>
-                <td>
-                    <img style="width: 50px;" src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                </td>
-                <td>
-                    aya@gmail.com
-                </td>
-                <td>
-                    010212211121
-                </td>
-                <td>
-                    Doctor
-                </td>
-                <td>
-                    <button class="btn btn-warning me-3">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<div class="layer position-absolute position-relative px-5 py-3 rounded text-center" id="layer">
+    <a (click)="closeAddBox()" class="position-absolute close">
+        <i class="fa fa-close fs-5"></i>
+    </a>
+    <h4 class="mt-5">Add New Admin</h4>
+    <form  [formGroup]="addAdmin" (ngSubmit)="addNewAdmin()" class="py-4">
+        <div class="form-group mb-4">
+            <input type="text" class="form-control my-2 bg-transparent" placeholder="Enter Admin Name" formControlName="name">
+            <div *ngIf="addAdmin.controls['name'].errors&& addAdmin.controls['name'].touched ">
+                <span *ngIf="addAdmin.controls['name'].errors?.['required']!==undefined" class="text-danger">Name is required</span>
+                <span *ngIf="addAdmin.controls['name'].errors?.['minlength']" class="text-danger">Min length must be 3</span>
+                <span *ngIf="addAdmin.controls['name'].errors?.['maxlength']" class="text-danger">Max length must be 20</span>
+            </div>
+        </div>
+
+        <div class="form-group mb-4">
+            <!-- <label for="">Email:</label> -->
+            <input type="email" class="form-control my-2 bg-transparent" placeholder="Enter your email" formControlName="email">
+            <div *ngIf="addAdmin.controls['email'].errors&& addAdmin.controls['email'].touched ">
+                <span *ngIf="addAdmin.controls['email'].errors?.['required']!==undefined" class="text-danger">Email is required</span>
+                <span *ngIf="!addAdmin.controls['email'].errors?.['required'] && addAdmin.controls['email'].errors!=null " class="text-danger">Email not valid </span>   
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <select id="" value="Admin"  class="form-control my-2 bg-transparent" formControlName="Role">
+                <option selected value="Admin">Admin</option>
+                <option disabled value="Receptionist">Receptionist</option>
+                <option disabled value="Patient">Patient</option>
+                <option disabled value="Doctor">Doctor</option>
+            </select>
+        </div>
+        <div class="form-group mb-4">
+            <!-- <label for="">Password:</label> -->
+            <input type="password" class="form-control my-2 bg-transparent" placeholder="Enter password" formControlName="password">
+            <div *ngIf="addAdmin.controls['password'].errors&& addAdmin.controls['password'].touched ">
+                <span *ngIf="addAdmin.controls['password'].errors?.['required']!==undefined" class="text-danger">password is required</span>
+                <span *ngIf="!addAdmin.controls['password'].errors?.['required'] && addAdmin.controls['password'].errors!=null " class="text-danger">Password must start with small letter then conatin from 3 to 8 numbers </span>   
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <input type="file" class="form-control my-2 bg-transparent" formControlName="image">
+            <div *ngIf="addAdmin.controls['image'].errors&& addAdmin.controls['image'].touched ">
+                <span *ngIf="addAdmin.controls['image'].errors?.['required']" class="text-danger">Image is required</span> 
+            </div>
+        </div>
+        <button [disabled]="addAdmin.status=='INVALID'"  type="submit" class="btn">Add Admin</button>
+        
+    </form>
+</div>
+
+
+
+
+<div class="updatelayer position-absolute position-relative px-5 py-3 rounded text-center" id="updatelayer">
+    <a (click)="closeUpdateBox()" class="position-absolute close">
+        <i class="fa fa-close fs-5"></i>
+    </a>
+    <h4 class="mt-4">Update Admin</h4>
+    
+    <form  [formGroup]="updateAdmin" (ngSubmit)="updateOneAdmin()" class="py-4">
+        <div class="form-group mb-4">
+            <input type="text" class="form-control my-2 bg-transparent" placeholder="Enter Admin Name" formControlName="name">
+            <div *ngIf="updateAdmin.controls['name'].errors&& updateAdmin.controls['name'].touched ">
+                <span *ngIf="updateAdmin.controls['name'].errors?.['required']!==undefined" class="text-danger">Name is required</span>
+                <span *ngIf="updateAdmin.controls['name'].errors?.['minlength']" class="text-danger">Min length must be 3</span>
+                <span *ngIf="updateAdmin.controls['name'].errors?.['maxlength']" class="text-danger">Max length must be 20</span>
+            </div>
+        </div>
+
+        <div class="form-group mb-4">
+            <!-- <label for="">Email:</label> -->
+            <input type="email" class="form-control my-2 bg-transparent" placeholder="Enter your email" formControlName="email">
+            <div *ngIf="updateAdmin.controls['email'].errors&& updateAdmin.controls['email'].touched ">
+                <span *ngIf="updateAdmin.controls['email'].errors?.['required']!==undefined" class="text-danger">Email is required</span>
+                <span *ngIf="!updateAdmin.controls['email'].errors?.['required'] && updateAdmin.controls['email'].errors!=null " class="text-danger">Email not valid </span>   
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <select id="" value="Admin"  class="form-control my-2 bg-transparent" formControlName="Role">
+                <option selected value="Admin">Admin</option>
+                <option disabled value="Receptionist">Receptionist</option>
+                <option disabled value="Patient">Patient</option>
+                <option disabled value="Doctor">Doctor</option>
+            </select>
+        </div>
+        <div class="form-group mb-4">
+            <!-- <label for="">Password:</label> -->
+            <input type="password" class="form-control my-2 bg-transparent" placeholder="Enter password" formControlName="password">
+            <div *ngIf="updateAdmin.controls['password'].errors&& updateAdmin.controls['password'].touched ">
+                <span *ngIf="updateAdmin.controls['password'].errors?.['required']!==undefined" class="text-danger">password is required</span>
+                <span *ngIf="!updateAdmin.controls['password'].errors?.['required'] && updateAdmin.controls['password'].errors!=null " class="text-danger">Password must start with small letter then conatin from 3 to 8 numbers </span>   
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <input type="file" class="form-control my-2 bg-transparent" formControlName="image">
+            <div *ngIf="updateAdmin.controls['image'].errors&& updateAdmin.controls['image'].touched ">
+                <span *ngIf="updateAdmin.controls['image'].errors?.['required']" class="text-danger">Image is required</span> 
+            </div>
+        </div>
+        <button [disabled]="updateAdmin.status=='INVALID'"  type="submit" class="btn">Update Admin</button>
+        
+    </form>
+</div> 
+
+
+<div class="deletePopUp text-center" id="deletedLayer">
+    <a (click)="closeDeleteBox()" class="position-absolute close">
+        <i class="fa fa-close fs-5"></i>
+    </a>
+    <h4 class="mt-4">Are You Sure To Delete</h4>
+    <div class="buttons mt-3">
+        <button (click)="delete()" class="btn btn-info me-3 text-white">Ok</button>
+    </div>
 </div>

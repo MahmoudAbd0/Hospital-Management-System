@@ -7,6 +7,10 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { ReceptionistComponent } from './components/receptionist/receptionist.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination'; 
+
 
 @NgModule({
   declarations: [
@@ -14,11 +18,14 @@ import { ReceptionistComponent } from './components/receptionist/receptionist.co
     SidebarComponent,
     AdminComponent,
     DoctorComponent,
-    ReceptionistComponent
+    ReceptionistComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

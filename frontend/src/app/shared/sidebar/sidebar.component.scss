@@ -43,9 +43,9 @@ $black2 : #999;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
 }
-.navigation ul li:hover{
-    background-color: $whiteColor;
-}
+// .navigation ul li:hover{
+//     background-color: $whiteColor;
+// }
 .navigation ul li:nth-child(1)
 {
     margin-bottom: 20px;
@@ -59,8 +59,10 @@ $black2 : #999;
     text-decoration: none;
     color:$whiteColor
 }
-.navigation ul li:hover a{
-    color :$blueColor
+.test{
+    color :$blueColor !important;
+    background-color: $whiteColor;
+    border-radius: 40px 0px 0px 40px;
 }
 .navigation ul li a .icaons
 {
@@ -86,33 +88,33 @@ $black2 : #999;
     white-space: nowrap;
 }
 
-.navigation ul li:hover a::before
-{
-    content: "";
-    position: absolute;
-    right: 0;
-    top: -50px;
-    width: 50px;
-    height: 50px;
-    background-color: transparent;
-    box-shadow: 35px 35px 0 10px $whiteColor;
-    border-radius: 50%;
-    pointer-events: none;
-}
+// .navigation ul li:hover a::before
+// {
+//     content: "";
+//     position: absolute;
+//     right: 0;
+//     top: -50px;
+//     width: 50px;
+//     height: 50px;
+//     background-color: transparent;
+//     box-shadow: 35px 35px 0 10px $whiteColor;
+//     border-radius: 50%;
+//     pointer-events: none;
+// }
 
-.navigation ul li:hover a::after
-{
-    content: "";
-    position: absolute;
-    right: 0;
-    bottom: -50px;
-    width: 50px;
-    height: 50px;
-    background-color: transparent;
-    box-shadow: 35px -35px 0 10px $whiteColor;
-    border-radius: 50%;
-    pointer-events: none;
-}
+// .navigation ul li:hover a::after
+// {
+//     content: "";
+//     position: absolute;
+//     right: 0;
+//     bottom: -50px;
+//     width: 50px;
+//     height: 50px;
+//     background-color: transparent;
+//     box-shadow: 35px -35px 0 10px $whiteColor;
+//     border-radius: 50%;
+//     pointer-events: none;
+// }
 
 
 
