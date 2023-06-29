@@ -28,15 +28,14 @@ class ShiftController extends Controller
      */
     public function store(ShiftRequest $request)
     {
-        $shift= new Shift;
-        $shift->name=$request->name;
-        $shift->days=$request->days;
-        $shift->start_time=$request->start_time;
-        $shift->end_time=$request->end_time;
+        $shift = new Shift;
+        $shift->name = $request->name;
+        $shift->days = $request->days;
+        $shift->start_time = $request->start_time;
+        $shift->end_time = $request->end_time;
         $shift->save();
 
-        return response()->json(['message'=>'created successfully','shift'=>$shift]);
-
+        return response()->json(['message' => 'created successfully', 'shift' => $shift]);
     }
 
 
@@ -48,13 +47,11 @@ class ShiftController extends Controller
      */
     public function show(Shift $shift)
     {
-       if(!$shift){
-        return response()->json(['message'=>'Invaild Id']);
-       }else{
-        return response()->json(['message'=>'success','shift'=>$shift]);
-
-       }
-
+        if (!$shift) {
+            return response()->json(['message' => 'Invaild Id']);
+        } else {
+            return response()->json(['message' => 'success', 'shift' => $shift]);
+        }
     }
 
     /**
@@ -64,16 +61,15 @@ class ShiftController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ShiftRequest $request,Shift $shift)
+    public function update(ShiftRequest $request, Shift $shift)
     {
-        $shift->name=$request->name;
-        $shift->days=$request->days;
-        $shift->start_time=$request->start_time;
-        $shift->end_time=$request->end_time;
+        $shift->name = $request->name;
+        $shift->days = $request->days;
+        $shift->start_time = $request->start_time;
+        $shift->end_time = $request->end_time;
         $shift->save();
 
-        return response()->json(['message'=>'Updated successfully','shift'=>$shift]);
-
+        return response()->json(['message' => 'Updated successfully', 'shift' => $shift]);
     }
 
     /**
@@ -85,7 +81,6 @@ class ShiftController extends Controller
     public function destroy(Shift $shift)
     {
         $shift->delete();
-        return response()->json(['message'=>'deleted successfully']);
-
+        return response()->json(['message' => 'deleted successfully']);
     }
 }
