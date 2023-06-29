@@ -1,5 +1,6 @@
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+<<<<<<< HEAD
 import {
   NbAuthComponent,
   NbLoginComponent,
@@ -52,6 +53,18 @@ export const routes: Routes = [
 const config: ExtraOptions = {
   useHash: false,
 };
+=======
+import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './components/admin/admin.component';
+import { DoctorComponent } from './components/doctor/doctor.component';
+import { ReceptionistComponent } from './components/receptionist/receptionist.component';
+
+const routes: Routes = [
+  {path:"admin", component:AdminComponent},
+  {path:"doctor", component:DoctorComponent},
+  {path:"receptionist", component:ReceptionistComponent},
+];
+>>>>>>> 0ab56b9515657dd9961b3c326bef73833bb5f0f6
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, config)],
