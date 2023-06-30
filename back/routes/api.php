@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\API\Auth\AuthController;
+use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\ShiftController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\RoomController;
+use Illuminate\Auth\Events\Login;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('shifts',ShiftController::class);
+Route::apiResource('users', UserController::class);
+Route::apiResource('shifts', ShiftController::class);
+
+Route::apiResource('rooms', 'App\Http\Controllers\API\RoomController');
+Route::post('login',[AuthController::class,'login']);
+// Route::post('register',[AuthController::class,'register']);

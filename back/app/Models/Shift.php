@@ -14,4 +14,8 @@ class Shift extends Model
         'end_time',
         'days'
     ];
+
+    protected $casts = [
+        "days" => "collection"
+    ];
 }
