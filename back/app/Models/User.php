@@ -21,6 +21,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'gender',
+        'date_of_birth',
+        'phone_number',
+        'image',
+        'shift_id',
+        'role',
+        'department_id',
     ];
 
     /**
@@ -40,5 +47,32 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'date_of_birth' => 'datetime',
     ];
+
+
+    public function gender()
+    {
+        return $this->gender == 0 ? "male" : "female";
+    }
+
+    function age()
+    {
+        return now()->diffInYears($this->date_of_birth);
+    }
+
+    public function scopeDoctors($q)
+    {
+        return $q->where("role", 1);
+    }
+
+    public function scopeReceptionists($q)
+    {
+        return $q->where("role", 2);
+    }
+
+    public function scopePatients($q)
+    {
+        return $q->where("role", 3);
+    }
 }

@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RoomRequest;
 use Illuminate\Http\Request;
-use App\Models\Room;
+use App\Models\Department;
 
-class RoomController extends Controller
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $rooms = Room::all();
-        return response()->json($rooms);
+        $departments = Department::all();
+        return response()->json($departments);
     }
 
     /**
@@ -26,13 +25,10 @@ class RoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RoomRequest $request)
+    public function store(Request $request)
     {
-        $room = new Room();
-        $room->name = $request->input('name');
-        $room->description = $request->input('description');
-        $room->save();
-        return response()->json($room);
+        $department = Department::create($request->all());
+        return response()->json($department, 201);
     }
 
     /**
@@ -41,10 +37,9 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Department $department)
     {
-        $room = Room::find($id);
-        return response()->json($room);
+        return response()->json($department);
     }
 
     /**
@@ -54,13 +49,10 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Department $department)
     {
-        $room = Room::find($id);
-        $room->name = $request->input('name');
-        $room->description = $request->input('description');
-        $room->save();
-        return response()->json($room);
+        $department->update($request->all());
+        return response()->json($department);
     }
 
     /**
@@ -70,9 +62,14 @@ class RoomController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $room = Room::find($id);
-        $room->delete();
-        return response()->json(['message' => 'Room deleted']);
+    {   
+        // $department->delete();
+        // return response()->json(['message' => 'Room deleted']);
+        $department = Department::findOrFail($id);
+        $department->delete();
+        return response()->json(['message' => 'Department deleted']);
+
+
     }
+
 }
