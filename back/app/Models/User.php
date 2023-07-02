@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -51,6 +52,22 @@ class User extends Authenticatable
     ];
 
 
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function ($user) {
+            if (isset($user["password"])) {
+                $user["password"] = Hash::make($user["password"]);
+            }
+        });
+
+        self::updating(function ($user) {
+            if (isset($user["password"])) {
+                $user["password"] = Hash::make($user["password"]);
+            }
+        });
+    }
+
     public function gender()
     {
         return $this->gender == 0 ? "male" : "female";
@@ -74,5 +91,16 @@ class User extends Authenticatable
     public function scopePatients($q)
     {
         return $q->where("role", 3);
+    }
+
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    public function shift()
+    {
+        return $this->belongsTo(Shift::class, 'shift_id');
     }
 }
