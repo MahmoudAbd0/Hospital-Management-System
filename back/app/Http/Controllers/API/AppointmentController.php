@@ -44,6 +44,7 @@ class AppointmentController extends Controller
         ->where('doctor_id', $request->doctor_id)
         ->where('time', $request->time)
         ->first();
+
     if ($existingAppointment) {
         return response()->json(['error' => 'Appointment already exists for this doctor at this time'], 422);
     }
@@ -81,6 +82,14 @@ class AppointmentController extends Controller
         if (is_null($appointment)) {
             return response()->json(['success'=>'false','message'=>'Invalid_appointment']);
           }else{
+            $existingAppointment = DB::table('appointments')
+            ->where('doctor_id', $request->doctor_id)
+            ->where('time', $request->time)
+            ->first();
+
+        if ($existingAppointment) {
+            return response()->json(['error' => 'Appointment already exists for this doctor at this time'], 422);
+        }
            $data = $request->validated();
            $appointment::where('id',$id)->update($data);
          return response()->json(['success'=>'true','message'=>'Updated successfully']);
