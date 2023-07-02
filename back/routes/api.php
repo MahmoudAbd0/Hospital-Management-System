@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\ShiftController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RoomController;
 use App\Http\Controllers\API\DepartmentController;
+use App\Http\Controllers\API\PatientController;
+use App\Http\Controllers\DoctorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +24,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::apiResource('patients', PatientController::class);
+Route::apiResource('doctors', DoctorController::class);
 
-Route::apiResource('rooms','App\Http\Controllers\API\RoomController');
+
+
+Route::apiResource('shifts', ShiftController::class);
+
+Route::apiResource('rooms', 'App\Http\Controllers\API\RoomController');
 Route::apiResource('departments', App\Http\Controllers\API\DepartmentController::class);
-
