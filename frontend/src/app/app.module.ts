@@ -7,6 +7,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { ReceptionistComponent } from './components/receptionist/receptionist.component';
+import { DoctorSideComponent } from './components/doctor-side/doctor-side.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ReceptionistComponent } from './components/receptionist/receptionist.co
     SidebarComponent,
     AdminComponent,
     DoctorComponent,
-    ReceptionistComponent
+    ReceptionistComponent,
+    DoctorSideComponent
   ],
   imports: [
     BrowserModule,
