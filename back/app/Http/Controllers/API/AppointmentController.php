@@ -40,7 +40,13 @@ class AppointmentController extends Controller
         // $appointment->doctor_id=$request->doctor_id;
         // $appointment->patient_id=$request->patient_id;
         // $appointment->save();
-
+        $existingAppointment = DB::table('appointments')
+        ->where('doctor_id', $request->doctor_id)
+        ->where('time', $request->time)
+        ->first();
+    if ($existingAppointment) {
+        return response()->json(['error' => 'Appointment already exists for this doctor at this time'], 422);
+    }
         $data=$request->validated();
         Appointment::create($data);
         return response()->json(['success'=>'true','message'=>'Appointment created successfully']);

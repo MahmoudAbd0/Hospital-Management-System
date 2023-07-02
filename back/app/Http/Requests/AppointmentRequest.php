@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AppointmentRequest extends FormRequest
 {
@@ -24,7 +25,13 @@ class AppointmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'time' => 'required|date',
+            'time' => [
+                'required',
+                'date',
+                Rule::unique('appointments','time')
+                    ->where('doctor_id', $this->doctor_id)
+                    ->ignore($this->appointment_id),
+            ],
             'doctor_id' => 'required|exists:users,id,role,1',
             'patient_id' => 'required|exists:users,id,role,3',
         ];
