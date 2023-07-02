@@ -79,7 +79,12 @@ class ShiftController extends Controller
      */
     public function destroy($id)
     {
+        $shift=Shift::where('id',$id)->get()->first();
+        if (is_null($shift)) {
+            return response()->json(['success'=>'false','message'=>'Invalid_shift']);
+          }else{
         Shift::find($id)->delete();
         return response()->json(['message' => 'deleted successfully']);
     }
+}
 }

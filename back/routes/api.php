@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AppointmentController;
 use App\Http\Controllers\API\Auth\AuthController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\ShiftController;
@@ -29,6 +30,7 @@ Route::apiResource('patients', PatientController::class);
 
 
 Route::apiResource('shifts', ShiftController::class);
+Route::apiResource('appointments', AppointmentController::class);
 
 Route::apiResource('rooms', 'App\Http\Controllers\API\RoomController');
 Route::apiResource('departments', App\Http\Controllers\API\DepartmentController::class);
