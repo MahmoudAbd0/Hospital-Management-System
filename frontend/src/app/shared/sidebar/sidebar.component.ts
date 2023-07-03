@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
 
   constructor()
   {
@@ -17,5 +17,21 @@ export class SidebarComponent {
     let main = document.querySelector(".main");
     navigation?.classList.toggle("active");
     main?.classList.toggle("active");
+  }
+
+  loggedIn = false;
+  adminLogged = false;
+  drLogged = false;
+  receptionistLogged = false;
+
+  ngOnInit() {
+    this.loggedIn = localStorage.getItem('token') !== null;
+    this.adminLogged = localStorage.getItem('role') == '3';
+    this.receptionistLogged = localStorage.getItem('role') == '2';
+    this.drLogged = localStorage.getItem('role') == '1';
+  }
+
+  logout() {
+    localStorage.removeItem('token')
   }
 }

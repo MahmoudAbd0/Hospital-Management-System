@@ -15,7 +15,7 @@
                         </li>
                           
                         <li>
-                            <a routerLink="admin">
+                            <a routerLink="admin" *ngIf="adminLogged">
                                 <span class="icaons"><i class="fa fa-home" aria-hidden="true"></i></span>
                                 <span class="title">Admin</span>
                             </a>
@@ -26,6 +26,12 @@
                                 <span class="title">Doctor</span>
                             </a>
                         </li>
+                        <li *ngIf="drLogged">
+                            <a routerLink="doctor/appointments">
+                                <span class="icaons"><i class="fa fa-paint-brush" aria-hidden="true"></i></span>
+                                <span class="title">Doctor Appointements</span>
+                            </a>
+                        </li>
                          <!-- <li>
                             <a routerLink="receptionist">
                                 <span class="icaons"><i class="fa fa-home" aria-hidden="true"></i></span>
@@ -33,32 +39,34 @@
                             </a>
                         </li> -->
                         <li>
-                            <a href="#">
+                            <a routerLink="patient">
                                 <span class="icaons"><i class="fa-solid fa-hospital-user"></i></span>
                                 <span class="title">Patient</span>
                             </a>
                         </li>
-                        <!-- <li>
-                            <a href="#">
+                        <li *ngIf="!drLogged">
+                            <a routerLink="room-reservations">
+
                                 <span class="icaons"><i class="fa fa-user" aria-hidden="true"></i></span>
                                 <span class="title">Room Reservation</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
+                        <li *ngIf="!drLogged">
+                            <a routerLink="reservations">
                                 <span class="icaons"><i class="fa fa-user" aria-hidden="true"></i></span>
                                 <span class="title">Appointement Reservation</span>
                             </a>
-                        </li> -->
+                        </li>
                         <li>
-                            <a href="#">
+                            <a routerLink="departments">
+
                                 <span class="icaons"><i class="fa fa-paint-brush" aria-hidden="true"></i></span>
                                 <span class="title">Departments</span>
                             </a>
                         </li>
                         
-                        <li>
-                            <a href="#">
+                        <li *ngIf="!drLogged">
+                            <a routerLink="rooms">
                                 <span class="icaons"><i class="fa fa-paint-brush" aria-hidden="true"></i></span>
                                 <span class="title">Rooms</span>
                             </a>
@@ -91,6 +99,7 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
             </label>
         </div>
+        <a routerLink="/login" class="nav-link" (click)="logout()">Logout</a>
         <div class="user">
             <img src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="img">
         </div>

@@ -18,4 +18,10 @@ class Shift extends Model
     protected $casts = [
         "days" => "collection"
     ];
+
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'shift_id');
+    }
 }

@@ -21,7 +21,6 @@ class PatientController extends Controller
 
     public function store(StorePatientRequest $request)
     {
-
         $patient = User::create(array_merge($request->validated(), ["role" => 3]));
         return new PatientResource($patient);
     }
@@ -46,7 +45,7 @@ class PatientController extends Controller
         return response()->json(
             [
                 "data" => [
-                    "message" => "patient deleted successfully"
+                    "message" => "patient's account deleted successfully"
                 ]
             ]
         );
