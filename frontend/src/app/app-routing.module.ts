@@ -12,7 +12,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'admin',
     component: DashboardComponent,
     children: [
     {path:"admin", component:AdminComponent},

@@ -10,12 +10,13 @@ import { AdminComponent } from './components/admin/admin.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { ReceptionistComponent } from './components/receptionist/receptionist.component';
 import { ReservationsComponent } from './components/reservations/reservations.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoomReservationsComponent } from './components/room-reservations/room-reservations.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -37,7 +38,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    FullCalendarModule
+    FullCalendarModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
