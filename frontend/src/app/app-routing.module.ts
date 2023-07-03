@@ -13,6 +13,7 @@ import { PatientComponent } from './components/patient/patient.component';
 import { DoctorAppointmentsComponent } from './components/doctor-appointments/doctor-appointments.component';
 import { HomeComponent } from './components/home/home.component';
 
+
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {
