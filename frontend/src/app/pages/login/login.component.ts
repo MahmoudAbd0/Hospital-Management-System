@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', result.token);
           localStorage.setItem('role', result.user.role);
           if(localStorage.getItem('role') == '3') {
+            console.log('admin')
             this.router.navigate(['dashboard/admin'])
           } 
           else if (localStorage.getItem('role') == '2') {
