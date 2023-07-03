@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -13,16 +14,37 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+     // Get the authenticated user
+     $user = $request->user();
 
-        $results = Booking::with('room')
-        ->get();
+     if($user->role == '3') {
+        // Retrieve the bookings for the user
+        $bookings = Booking::where('user_id', $user->id)->get();
 
-        return response()->json($results);
+        return response()->json(['bookings' => $bookings]);
+        
+    
+        // // Check if a room filter is present
+        // if ($request->has('room_id')) {
+        //     $bookings->where('room_id', $request->room_id);
+        // }
 
-        // $bookings = Booking::all();
-        // return response()->json($bookings);
+     }
+
+ 
+     // Get the bookings
+     $bookings = $bookings->get();
+
+
+
+        // $results = Booking::with('Room')
+        // ->get();
+
+        // return response()->json($results);
+
+       
     }
 
     /**
@@ -33,16 +55,35 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-
-
-        $user=User::find($id);
-        // $booking = new Booking();
-        // $booking->room_id = $request->input('room_id');
-        // $booking->patient_id = $request->input('patient_id');
-        // $booking->start_date = $request->input('start_date');
-        // $booking->end_date = $request->input('end_date');
-        // $booking->save();
-        // return response()->json($booking);
+        // Get the authenticated user
+    // $user = $request->user();
+    
+    // Check if the user has the "patient" role
+    if (!$user->hasRole('patient')) {
+        return response()->json(['error' => 'Unauthorized'], 401);
+    }
+    
+    // Get the input data from the request
+    $roomId = $request->input('room_id');
+    
+    
+    // Get the selected room
+    $room = Room::find($roomId);
+    
+    if (!$room) {
+        return response()->json(['error' => 'Room not found'], 404);
+    }
+    
+    // Create a new booking
+    $booking = new Booking();
+    $booking->user_id = $user->id;
+    $booking->room_id = $room->id;
+    $booking->date = Carbon::now();
+    $booking->save();
+    
+    // Return a success response
+    // return response()->json(['success' => true]);
+    return response()->json($booking);
     }
 
     /**
@@ -51,10 +92,18 @@ class BookingController extends Controller
      * @param  \App\Models\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function show(Booking $booking)
-    {
-        //
+    public function show($user_id, $room_id)
+{
+    $booking = Booking::where('user_id', $user_id)
+                      ->where('room_id', $room_id)
+                      ->first();
+    
+    if ($booking) {
+        return response()->json(['booking' => $booking]);
+    } else {
+        return response()->json(['message' => 'Booking not found.'], 404);
     }
+}
 
     /**
      * Update the specified resource in storage.
@@ -63,9 +112,19 @@ class BookingController extends Controller
      * @param  \App\Models\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Booking $booking)
+    public function update(Request $request, $user_id, $room_id)
     {
-        //
+        $booking = Booking::where('user_id', $user_id)
+        ->where('room_id', $room_id)
+        ->first();
+
+            if ($booking) {
+            $booking->update($request->all());
+
+            return response()->json(['message' => 'Booking updated successfully.']);
+            } else {
+            return response()->json(['message' => 'Booking not found.'], 404);
+            }
     }
 
     /**
@@ -74,8 +133,17 @@ class BookingController extends Controller
      * @param  \App\Models\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Booking $booking)
+    public function destroy($user_id, $room_id)
     {
-        //
+        $booking = Booking::where('user_id', $user_id)
+                      ->where('room_id', $room_id)
+                      ->first();
+    
+    if ($booking) {
+        $booking->delete();
+        return response()->json(['message' => 'Booking deleted successfully.']);
+    } else {
+        return response()->json(['message' => 'Booking not found.'], 404);
+    }
     }
 }

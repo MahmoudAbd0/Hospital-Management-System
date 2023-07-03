@@ -8,6 +8,7 @@ use App\Http\Controllers\API\RoomController;
 use App\Http\Controllers\API\DepartmentController;
 use App\Http\Controllers\API\PatientController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\API\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,13 @@ Route::apiResource('shifts', ShiftController::class);
 
 Route::apiResource('rooms', 'App\Http\Controllers\API\RoomController');
 Route::apiResource('departments', App\Http\Controllers\API\DepartmentController::class);
+
+
+
+Route::apiResource('bookings', App\Http\Controllers\API\BookingController::class);
+
+
+
+// Route::get('/booking/{user_id}/{room_id}', 'App\Http\Controllers\API\BookingController@show')->name('bookings.show');
+// Route::put('/booking/{user_id}/{room_id}', 'App\Http\Controllers\API\BookingController@update');
+// Route::delete('/booking/{user_id}/{room_id}', 'App\Http\Controllers\API\BookingController@destroy');

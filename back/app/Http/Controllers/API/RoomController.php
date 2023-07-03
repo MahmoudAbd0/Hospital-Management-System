@@ -16,6 +16,12 @@ class RoomController extends Controller
      */
     public function index()
     {
+
+        // $results = Room::with('users')
+        // ->get();
+
+        // return response()->json($results);
+
         $rooms = Room::all();
         return response()->json($rooms);
     }
@@ -28,6 +34,7 @@ class RoomController extends Controller
      */
     public function store(RoomRequest $request)
     {
+        // $room = Room::create($request->validated());
         $room = new Room();
         $room->name = $request->input('name');
         $room->description = $request->input('description');
@@ -57,6 +64,7 @@ class RoomController extends Controller
     public function update(Request $request, $id)
     {
         $room = Room::find($id);
+        // $room->update($request->all());
         $room->name = $request->input('name');
         $room->description = $request->input('description');
         $room->save();
