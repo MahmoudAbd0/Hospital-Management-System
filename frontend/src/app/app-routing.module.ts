@@ -24,7 +24,7 @@ const routes: Routes = [
     {path: "rooms", component:RoomsComponent}
     ]
   },
-  {path: "login", component:LoginComponent}
+  {path: "", component:LoginComponent}
 
 ]
 
