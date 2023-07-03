@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('patients', PatientController::class);
 Route::apiResource('doctors', DoctorController::class);
 
-
+Route::get('doctors/{id}/appointments',[DoctorController::class,'appointments']);
 
 Route::apiResource('shifts', ShiftController::class);
 Route::apiResource('appointments', AppointmentController::class);
