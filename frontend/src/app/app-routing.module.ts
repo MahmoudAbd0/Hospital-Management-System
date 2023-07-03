@@ -9,6 +9,7 @@ import { DepartmentsComponent } from './components/departments/departments.compo
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+=======
 
 const routes: Routes = [
   {

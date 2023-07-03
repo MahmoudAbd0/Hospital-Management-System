@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -21,6 +22,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'gender',
+        'date_of_birth',
+        'phone_number',
+        'image',
+        'shift_id',
+        'role',
+        'department_id',
     ];
 
     /**
@@ -40,5 +48,59 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'date_of_birth' => 'datetime',
     ];
+
+
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function ($user) {
+            if (isset($user["password"])) {
+                $user["password"] = Hash::make($user["password"]);
+            }
+        });
+
+        self::updating(function ($user) {
+            if (isset($user["password"])) {
+                $user["password"] = Hash::make($user["password"]);
+            }
+        });
+    }
+
+    public function gender()
+    {
+        return $this->gender == 0 ? "male" : "female";
+    }
+
+    function age()
+    {
+        return now()->diffInYears($this->date_of_birth);
+    }
+
+    public function scopeDoctors($q)
+    {
+        return $q->where("role", 1);
+    }
+
+    public function scopeReceptionists($q)
+    {
+        return $q->where("role", 2);
+    }
+
+    public function scopePatients($q)
+    {
+        return $q->where("role", 3);
+    }
+
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    public function shift()
+    {
+        return $this->belongsTo(Shift::class, 'shift_id');
+    }
 }
