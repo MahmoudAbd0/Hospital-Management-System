@@ -17,8 +17,9 @@ export class AdminComponent{
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     });
 
-    this.http.get('', {headers: headers}).subscribe(
+    this.http.get('http://localhost:8000/api/user', {headers: headers}).subscribe(
       result => console.log(result) 
     )
   }
 }
+
