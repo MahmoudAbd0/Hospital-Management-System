@@ -13,7 +13,9 @@ import { ReservationsComponent } from './components/reservations/reservations.co
 import { FormsModule } from '@angular/forms';
 import { RoomReservationsComponent } from './components/room-reservations/room-reservations.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
-import { RoomsComponent } from './components/rooms/rooms.component'
+import { RoomsComponent } from './components/rooms/rooms.component';
+import { LoginComponent } from './pages/login/login.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 
@@ -27,7 +29,9 @@ import { RoomsComponent } from './components/rooms/rooms.component'
     ReservationsComponent,
     RoomReservationsComponent,
     DepartmentsComponent,
-    RoomsComponent
+    RoomsComponent,
+    LoginComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
