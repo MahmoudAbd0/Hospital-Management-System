@@ -1,0 +1,27 @@
+.main {
+    padding-top: 7vh;
+}
+
+
+/* Style the input field */
+input[type="date"] {
+    appearance: none;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  /* Style the date picker arrow */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+    margin-left: -0.5rem;
+  }
+  
+  /* Adjust the date format */
+  input[type="date"]::-webkit-datetime-edit {
+    padding: 0;
+  }
