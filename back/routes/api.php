@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\AppointmentController;
+use App\Http\Controllers\API\Auth\AuthController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\ShiftController;
 use Illuminate\Http\Request;
@@ -28,9 +30,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('patients', PatientController::class);
 Route::apiResource('doctors', DoctorController::class);
 
-
+Route::get('doctors/{id}/appointments',[DoctorController::class,'appointments']);
 
 Route::apiResource('shifts', ShiftController::class);
+Route::apiResource('appointments', AppointmentController::class);
 
 Route::apiResource('rooms', 'App\Http\Controllers\API\RoomController');
 Route::apiResource('departments', App\Http\Controllers\API\DepartmentController::class);
@@ -39,8 +42,5 @@ Route::apiResource('departments', App\Http\Controllers\API\DepartmentController:
 
 Route::apiResource('bookings', App\Http\Controllers\API\BookingController::class);
 
-
-
-// Route::get('/booking/{user_id}/{room_id}', 'App\Http\Controllers\API\BookingController@show')->name('bookings.show');
-// Route::put('/booking/{user_id}/{room_id}', 'App\Http\Controllers\API\BookingController@update');
-// Route::delete('/booking/{user_id}/{room_id}', 'App\Http\Controllers\API\BookingController@destroy');
+Route::post('login',[AuthController::class,'login']);
+// Route::post('register',[AuthController::class,'register']);

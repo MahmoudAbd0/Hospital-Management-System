@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ShiftRequest;
 use App\Models\Shift;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 use Illuminate\Http\Request;
 
 class ShiftController extends Controller
@@ -28,14 +30,9 @@ class ShiftController extends Controller
      */
     public function store(ShiftRequest $request)
     {
-        $shift = new Shift;
-        $shift->name = $request->name;
-        $shift->days = $request->days;
-        $shift->start_time = $request->start_time;
-        $shift->end_time = $request->end_time;
-        $shift->save();
-
-        return response()->json(['message' => 'created successfully', 'shift' => $shift]);
+        $data=$request->validated();
+         $shift=Shift::create($data);
+        return response()->json(['message'=>'created successfully','shift'=>$shift]);
     }
 
 
@@ -45,13 +42,14 @@ class ShiftController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Shift $shift)
+    public function show($id)
     {
-        if (!$shift) {
-            return response()->json(['message' => 'Invaild Id']);
-        } else {
-            return response()->json(['message' => 'success', 'shift' => $shift]);
-        }
+        $shift=Shift::where('id',$id)->get()->first();
+        if (is_null($shift)) {
+            return response()->json(['success'=>'false','message'=>'Invalid_shift']);
+          }else{
+            return response()->json(['success'=>'success','shift'=>$shift]);
+          }
     }
 
     /**
@@ -61,15 +59,16 @@ class ShiftController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ShiftRequest $request, Shift $shift)
+    public function update(ShiftRequest $request,$id)
     {
-        $shift->name = $request->name;
-        $shift->days = $request->days;
-        $shift->start_time = $request->start_time;
-        $shift->end_time = $request->end_time;
-        $shift->save();
-
-        return response()->json(['message' => 'Updated successfully', 'shift' => $shift]);
+        $shift=Shift::where('id',$id)->get()->first();
+        if (is_null($shift)) {
+            return response()->json(['success'=>'false','message'=>'Invalid_shift']);
+          }else{
+           $data = $request->validated();
+           $shift::where('id',$id)->update($data);
+         return response()->json(['success'=>'true','message'=>'Updated successfully']);
+    }
     }
 
     /**
@@ -78,9 +77,14 @@ class ShiftController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Shift $shift)
+    public function destroy($id)
     {
-        $shift->delete();
+        $shift=Shift::where('id',$id)->get()->first();
+        if (is_null($shift)) {
+            return response()->json(['success'=>'false','message'=>'Invalid_shift']);
+          }else{
+        Shift::find($id)->delete();
         return response()->json(['message' => 'deleted successfully']);
     }
+}
 }

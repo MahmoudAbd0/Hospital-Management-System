@@ -28,7 +28,10 @@ class ReportRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|',
+            'diagnosis' => 'required',
+            'description' => 'required',
+            // 'files' => 'required',
+            'appointment_id' => 'required'
         ];
     }
 

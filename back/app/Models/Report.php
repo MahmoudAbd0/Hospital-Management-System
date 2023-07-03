@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Report extends Model
 {
     use HasFactory;
+
+    public function appointment()
+    {
+        return $this->hasMany(Appointment::class);
+    }
 }

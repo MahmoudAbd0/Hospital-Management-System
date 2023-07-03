@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class MedicalReport extends Model
 {
     use HasFactory;
+
+   
 }
