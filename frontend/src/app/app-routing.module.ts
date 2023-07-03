@@ -9,14 +9,20 @@ import { DepartmentsComponent } from './components/departments/departments.compo
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { PatientComponent } from './components/patient/patient.component';
+import { DoctorAppointmentsComponent } from './components/doctor-appointments/doctor-appointments.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
+  {path: "", component: HomeComponent},
   {
-    path: 'admin',
+    path: 'dashboard',
     component: DashboardComponent,
     children: [
     {path:"admin", component:AdminComponent},
     {path:"doctor", component:DoctorComponent},
+    {path:"doctor/appointments", component:DoctorAppointmentsComponent},
+    {path:"patient", component:PatientComponent},
     {path:"receptionist", component:ReceptionistComponent},
     {path:"reservations", component:ReservationsComponent},
     {path: "room-reservations", component:RoomReservationsComponent},
@@ -24,7 +30,7 @@ const routes: Routes = [
     {path: "rooms", component:RoomsComponent}
     ]
   },
-  {path: "", component:LoginComponent}
+  {path: "login", component:LoginComponent}
 
 ]
 

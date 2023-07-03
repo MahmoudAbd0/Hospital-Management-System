@@ -17,6 +17,9 @@ import { RoomsComponent } from './components/rooms/rooms.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PatientComponent } from './components/patient/patient.component';
+import { DoctorAppointmentsComponent } from './components/doctor-appointments/doctor-appointments.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -33,6 +36,9 @@ import { HttpClientModule } from '@angular/common/http';
     RoomsComponent,
     LoginComponent,
     DashboardComponent,
+    PatientComponent,
+    DoctorAppointmentsComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

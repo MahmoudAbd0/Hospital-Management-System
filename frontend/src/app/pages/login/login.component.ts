@@ -39,13 +39,17 @@ export class LoginComponent implements OnInit {
 
       this.loginService.login(email, password).subscribe(
         (result: any) => {
+          console.log(result)
           localStorage.setItem('token', result.token);
           localStorage.setItem('role', result.user.role);
-          if(localStorage.getItem('role') == '2') {
-            this.router.navigate(['admin/admin'])
+          if(localStorage.getItem('role') == '3') {
+            this.router.navigate(['dashboard/admin'])
           } 
-          else if (localStorage.getItem('role') == '3') {
-            this.router.navigate(['admin/admin'])
+          else if (localStorage.getItem('role') == '2') {
+            this.router.navigate(['dashboard/receptionist'])
+          }
+          else if (localStorage.getItem('role') == '1') {
+            this.router.navigate(['dashboard/doctor/appointments'])
           }
           
           
