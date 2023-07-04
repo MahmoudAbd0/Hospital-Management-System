@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RoomController;
 use App\Http\Controllers\API\DepartmentController;
 use App\Http\Controllers\API\PatientController;
-use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\API\ReceptionistController;
+use App\Http\Controllers\API\DoctorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('patients', PatientController::class);
 Route::apiResource('doctors', DoctorController::class);
+Route::apiResource('receptionists', ReceptionistController::class);
 
 
 
@@ -36,5 +38,5 @@ Route::apiResource('appointments', AppointmentController::class);
 
 Route::apiResource('rooms', 'App\Http\Controllers\API\RoomController');
 Route::apiResource('departments', App\Http\Controllers\API\DepartmentController::class);
-Route::post('login',[AuthController::class,'login']);
+Route::post('login', [AuthController::class, 'login']);
 // Route::post('register',[AuthController::class,'register']);

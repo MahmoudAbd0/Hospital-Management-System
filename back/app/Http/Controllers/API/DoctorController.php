@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
 
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
 use App\Http\Resources\DoctorResource;
-use App\Models\User;
 use Illuminate\Http\Request;
-use League\CommonMark\Extension\Attributes\Node\Attributes;
 
 class DoctorController extends Controller
 {
