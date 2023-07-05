@@ -1,1 +1,25 @@
-<p>patient works!</p>
+
+ <div class="container">
+  <table class="table table-striped mt-5">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Patient</th>
+        <th scope="col">Email</th>
+        <th scope="col">Age</th>
+        <th scope="col">Gender</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let patient of patients">
+        <th scope="row">{{patient.id}}</th>
+        <td>{{patient.name}}</td>
+        <td>{{patient.email}}</td>
+        <td>{{patient.age}}</td>
+        <td>{{patient.gender}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
