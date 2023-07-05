@@ -12,22 +12,23 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-//   public function register(LoginRequest $request){
+  public function register(LoginRequest $request){
 
-//     $user=new User();
-//     $user->name=$request->name;
-//     $user->email=$request->email;
-//     $user->date_of_birth=$request->date_of_birth;
-//     $user->phone_number=$request->phone_number;
-//     $user->password=Hash::make( $request->password);
-//     $user->save();
+    $user=new User();
+    $user->name=$request->name;
+    $user->email=$request->email;
+    $user->role=$request->role;
+    $user->date_of_birth=$request->date_of_birth;
+    $user->phone_number=$request->phone_number;
+    $user->password=Hash::make( $request->password);
+    $user->save();
 
-//     return ['user' =>$user,
-//             'token'=> $user->createToken('web')->plainTextToken
-// ];
-//   }
+    return ['user' =>$user,
+            'token'=> $user->createToken('web')->plainTextToken
+];
+  }
 
-  public function login(LoginRequest $request){
+  public function login(Request $request){
     if(Auth::attempt($request->only('email','password')));
     // dd(Auth::user());
 
