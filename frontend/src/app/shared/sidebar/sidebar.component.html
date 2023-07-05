@@ -20,8 +20,8 @@
                                 <span class="title">Admin</span>
                             </a>
                         </li>
-                        <li>
-                            <a routerLink="doctor">
+                        <li *ngIf="!drLogged">
+                            <a  routerLink="doctor">
                                 <span class="icaons"><i class="fa fa-home" aria-hidden="true"></i></span>
                                 <span class="title">Doctor</span>
                             </a>
@@ -57,7 +57,7 @@
                                 <span class="title">Appointement Reservation</span>
                             </a>
                         </li>
-                        <li>
+                        <li *ngIf="!drLogged">
                             <a routerLink="departments">
 
                                 <span class="icaons"><i class="fa fa-paint-brush" aria-hidden="true"></i></span>
@@ -102,7 +102,7 @@
         <a routerLink="/login" class="nav-link" (click)="logout()">Logout</a>
         <div class="user">
             <img src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="img">
-            
+
         </div>
     </div>
 </div>
