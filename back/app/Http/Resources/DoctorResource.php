@@ -20,7 +20,8 @@ class DoctorResource extends JsonResource
             "email" => $this->email,
             "phone_number" =>  $this->phone_number,
             'department' => new DepartmentResource($this->department),
-            'shift' => new ShiftResource($this->shift)
+            'shift' => new ShiftResource($this->shift),
+            "image" => $this->imageUrl()
         ];
     }
 }

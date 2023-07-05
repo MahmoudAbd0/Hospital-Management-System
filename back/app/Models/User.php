@@ -78,6 +78,11 @@ class User extends Authenticatable
         return now()->diffInYears($this->date_of_birth);
     }
 
+    public function imageUrl()
+    {
+        return asset("storage/" . $this->image);
+    }
+
     public function scopeDoctors($q)
     {
         return $q->where("role", 1);
@@ -92,6 +97,8 @@ class User extends Authenticatable
     {
         return $q->where("role", 3);
     }
+
+
 
 
     public function department()

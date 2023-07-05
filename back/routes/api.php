@@ -11,6 +11,7 @@ use App\Http\Controllers\API\DepartmentController;
 use App\Http\Controllers\API\PatientController;
 use App\Http\Controllers\API\ReceptionistController;
 use App\Http\Controllers\API\DoctorController;
+use App\Http\Middleware\UploadUserImage;
 
 /*
 |--------------------------------------------------------------------------

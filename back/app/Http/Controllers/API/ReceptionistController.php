@@ -18,10 +18,9 @@ class ReceptionistController extends Controller
         return ReceptionistResource::collection($receptionists);
     }
 
-
     public function store(StoreReceptionistRequest $request)
     {
-        $receptionist = User::create(array_merge($request->validated(), ["role" => 2]));
+        $receptionist = User::create(array_merge(uploadImage($request, "images/users"), ["role" => 2]));
         return new ReceptionistResource($receptionist);
     }
 
@@ -34,7 +33,7 @@ class ReceptionistController extends Controller
 
     public function update(UpdateReceptionistRequest $request, User $receptionist)
     {
-        $receptionist->update($request->validated());
+        $receptionist->update(uploadImage($request, "images/users"));
         return new ReceptionistResource($receptionist);
     }
 
