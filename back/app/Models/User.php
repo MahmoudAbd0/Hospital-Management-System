@@ -64,6 +64,8 @@ class User extends Authenticatable
         self::updating(function ($user) {
             if (isset($user["password"])) {
                 $user["password"] = Hash::make($user["password"]);
+            } else {
+                unset($user["password"]);
             }
         });
     }
