@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DepartmentRequest;
 use Illuminate\Http\Request;
 use App\Models\Department;
 
@@ -17,6 +18,7 @@ class DepartmentController extends Controller
     {
         $departments = Department::all();
         return response()->json($departments);
+
     }
 
     /**
@@ -25,7 +27,7 @@ class DepartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DepartmentRequest $request)
     {
         $department = Department::create($request->all());
         return response()->json($department, 201);
@@ -49,7 +51,7 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department $department)
+    public function update(DepartmentRequest $request, Department $department)
     {
         $department->update($request->all());
         return response()->json($department);
@@ -62,7 +64,7 @@ class DepartmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   
+    {
         // $department->delete();
         // return response()->json(['message' => 'Room deleted']);
         $department = Department::findOrFail($id);

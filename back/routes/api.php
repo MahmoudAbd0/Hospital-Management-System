@@ -32,7 +32,7 @@ Route::apiResource('patients', PatientController::class);
 Route::apiResource('doctors', DoctorController::class);
 Route::apiResource('receptionists', ReceptionistController::class);
 
-
+Route::get('doctors/{id}/appointments',[DoctorController::class,'appointments']);
 
 Route::apiResource('shifts', ShiftController::class);
 Route::apiResource('appointments', AppointmentController::class);
@@ -40,4 +40,5 @@ Route::apiResource('appointments', AppointmentController::class);
 Route::apiResource('rooms', 'App\Http\Controllers\API\RoomController');
 Route::apiResource('departments', App\Http\Controllers\API\DepartmentController::class);
 Route::post('login', [AuthController::class, 'login']);
+
 // Route::post('register',[AuthController::class,'register']);
