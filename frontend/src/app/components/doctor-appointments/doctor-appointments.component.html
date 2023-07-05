@@ -30,13 +30,20 @@
         <th scope="col">Time</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="drLogged">
+      <tr *ngFor=" let appointment of appointments">
+        <th scope="row">{{appointment.id}}</th>
+        <td>{{appointment.doctor.name}}</td>
+        <td>{{appointment.patient.name}}</td>
+        <td>{{appointment.time}}</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="!drLogged">
       <tr *ngFor=" let appointment of appointments">
         <th scope="row">{{appointment.id}}</th>
         <td>{{appointment.doctor}}</td>
         <td>{{appointment.patient}}</td>
         <td>{{appointment.time}}</td>
-
       </tr>
     </tbody>
   </table>

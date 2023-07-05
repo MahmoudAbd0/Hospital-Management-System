@@ -7,9 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class AppointmentService {
 
-  constructor(private _httpClinet:HttpClient) { }
+  constructor(private _httpClient:HttpClient) { }
   getAppointments():Observable<any>{
-    return  this._httpClinet.get('http://127.0.0.1:8000/api/appointments');
+    return  this._httpClient.get('http://127.0.0.1:8000/api/appointments');
    }
-  
+   getAppointmentsByDoctor(id:any):Observable<any>{
+    return this._httpClient.get(`http://localhost:8000/api/doctors/${id}/appointments`);
+
+   }
+
 }
