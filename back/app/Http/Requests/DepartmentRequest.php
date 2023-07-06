@@ -28,7 +28,7 @@ class DepartmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:rooms',
+            'name' => 'required|unique:departments',
         ];
     }
 

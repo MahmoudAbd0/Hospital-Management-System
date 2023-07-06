@@ -14,12 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('medical_reports', function (Blueprint $table) {
-            $table->id();
-            $table->string('diagnosis');
-            $table->text('description');
-            $table->json('files')->nullable();
-            $table->foreignId('appointment_id')->constrained()->cascadeOnDelete();
-            $table->timestamps();
+           
         });
     }
 
@@ -33,3 +28,9 @@ return new class extends Migration
         Schema::dropIfExists('medical_reports');
     }
 };
+ $table->id();
+            $table->string('diagnosis');
+            $table->text('description');
+            $table->json('files')->nullable();
+            $table->foreignId('appointment_id')->constrained()->cascadeOnDelete();
+            $table->timestamps();

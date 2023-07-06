@@ -11,6 +11,7 @@ use App\Http\Controllers\API\DepartmentController;
 use App\Http\Controllers\API\PatientController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\API\BookingController;
+use App\Http\Controllers\API\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,9 @@ Route::apiResource('departments', App\Http\Controllers\API\DepartmentController:
 
 
 Route::apiResource('bookings', App\Http\Controllers\API\BookingController::class);
+
+Route::apiResource('reports', App\Http\Controllers\API\ReportController::class);
+Route::post('reports/{id}',[ReportController::class,'store']);
 
 Route::post('login',[AuthController::class,'login']);
 // Route::post('register',[AuthController::class,'register']);
