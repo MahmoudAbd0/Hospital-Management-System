@@ -4,6 +4,9 @@ import { DoctorService } from 'src/app/services/doctor.service';
 import { ReceptionistService } from 'src/app/services/receptionist.service';
 import { doctorModel } from 'src/app/models/doctors/doctorModel.model';
 import { receptionistModel } from 'src/app/models/doctors/receptionistModel';
+import { patientModel } from 'src/app/models/doctors/patientModel.model';
+import { PatientService  } from 'src/app/services/patient.service';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -12,23 +15,29 @@ import { receptionistModel } from 'src/app/models/doctors/receptionistModel';
 export class AdminComponent{
   doctors!: doctorModel[];
   receptionists!: receptionistModel[];
+  patients!: patientModel[];
   selectedDoctor: doctorModel | null = null;
   selectedReceptionist: receptionistModel | null = null;
+  selectedPatient: patientModel | null = null;
   editMode = false;
 
-  constructor(private doctorService: DoctorService, private receptionistService: ReceptionistService) {}
+  constructor(private doctorService: DoctorService, private receptionistService: ReceptionistService, private patientService:PatientService) {}
 
   ngOnInit(): void {
     this.doctorService.getdoctors().subscribe(response  => {
       this.doctors = response.data;
-      // console.log(doctors.data)
     });
 
     this.receptionistService.getReceptionists().subscribe(response  => {
       this.receptionists = response.data;
-      // console.log(doctors.data)
+    });
+
+
+    this.patientService.getPatients().subscribe(response  => {
+      this.patients = response.data;
     });
   }
+
   
 
   editDoctor(doctor: doctorModel): void {
@@ -42,9 +51,16 @@ export class AdminComponent{
     this.editMode = true;
   }
 
+  editPatient(patient: patientModel): void {
+    console.log('clicked')
+    this.selectedPatient = { ...patient };
+    this.editMode = true;
+  }
+
   cancelEdit(): void {
     this.selectedDoctor = null;
     this.selectedReceptionist = null;
+    this.selectedPatient = null;
     this.editMode = false;
   }
 
@@ -72,6 +88,18 @@ export class AdminComponent{
     }
   }
 
+  savePatient(): void {
+    if (this.selectedPatient) {
+      this.patientService.updatePatient(this.selectedPatient).subscribe(updatedPatient => {
+        const index = this.patients.findIndex(d => d.id === updatedPatient.id);
+        if (index !== -1) {
+          this.patients[index] = updatedPatient;
+        }
+        this.cancelEdit();
+      });
+    }
+  }
+
   deleteDoctor(doctor: doctorModel): void {
     if (confirm('Are you sure you want to delete this user?')) {
       this.doctorService.deleteDoctor(doctor.id).subscribe(() => {
@@ -84,6 +112,14 @@ export class AdminComponent{
     if (confirm('Are you sure you want to delete this user?')) {
       this.receptionistService.deleteReceptionist(receptionist.id).subscribe(() => {
         this.receptionists = this.receptionists.filter(d => d.id !== receptionist.id);
+      });
+    }
+  }
+
+  deletePatient(patient: patientModel): void {
+    if (confirm('Are you sure you want to delete this user?')) {
+      this.patientService.deletePatient(patient.id).subscribe(() => {
+        this.patients = this.patients.filter(d => d.id !== patient.id);
       });
     }
   }

@@ -90,6 +90,25 @@
               <button class="btn btn-danger" (click)="deleteReceptionist(receptionist)">Delete</button>
             </td>
           </tr>
+          <tr *ngFor="let patient of patients">
+            <td>{{ patient.name }}</td>
+            <td>
+              <img style="width: 50px;" src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
+            </td>
+            <td>
+              {{ patient.email }}
+            </td>
+            <td>
+              {{ patient.phone_number }}
+            </td>
+            <td>
+                Patient
+            </td>
+            <td>
+              <button class="btn btn-warning me-3" (click)="editPatient(patient)">Edit</button>
+              <button class="btn btn-danger" (click)="deletePatient(patient)">Delete</button>
+            </td>
+          </tr>
   
         <ng-container *ngIf="editMode && selectedDoctor">
           <tr>
@@ -126,6 +145,26 @@
               <td>Doctor</td>
               <td>
                 <button class="btn btn-success" (click)="saveReceptionist()">Save</button>
+                <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+              </td>
+            </tr>
+          </ng-container>
+
+          <ng-container *ngIf="editMode && selectedPatient">
+            <tr>
+              <td>
+                <input [(ngModel)]="selectedPatient.name" class="form-control">
+              </td>
+              <td></td>
+              <td>
+                <input [(ngModel)]="selectedPatient.email" class="form-control">
+              </td>
+              <td>
+                <input [(ngModel)]="selectedPatient.phone_number" class="form-control">
+              </td>
+              <td>Doctor</td>
+              <td>
+                <button class="btn btn-success" (click)="savePatient()">Save</button>
                 <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
               </td>
             </tr>
