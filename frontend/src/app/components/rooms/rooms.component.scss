@@ -1,14 +1,15 @@
 .potientPage{
-    background-image: url("../../../assets/images/admin.jpg");
+    background-image: url("../../../assets/images/patient.png");
     background-size:cover;
     background-repeat:no-repeat;
     height:91vh;
   }
   .cal{
     height: 495px;
-    background-color: rgb(225, 239, 252);
+    background-color: rgb(210, 225, 239);
     border-radius: 15px;
     padding: 15px;
+    border: 1px solid rgb(138, 138, 138);
   }
 
   select {
@@ -16,9 +17,9 @@
     margin-bottom: 25px;
     border: none;
     outline: none;
-    border:1px solid rgb(27, 123, 220) ;
+    border:1px solid rgb(193, 230, 247) ;
     background: transparent;
-    color: rgb(13, 119, 138);
+    color:white;
     height: 40px;
     font-size: 16px;
   

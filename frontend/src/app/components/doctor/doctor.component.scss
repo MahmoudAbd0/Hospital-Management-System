@@ -35,10 +35,18 @@ div .table {
 }
 
 .doctorPage{
-  background-image: url("../../../assets/images/doctor2.jpg");
+  background-image: url("../../../assets/images/department.jpg");
   background-size:cover;
   background-repeat:no-repeat;
   height:91vh;
+}
+h1{
+  padding: 5px;
+  color:  #4881c2;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  padding: 10px;
 }
 .table-contact{
   width: 95%;
@@ -80,5 +88,5 @@ thead th{
   top: 0;
   left: 0;
   color: #ffffff;
-  background-color: #35ab9f;
+  background-color: #3584ab;
 }

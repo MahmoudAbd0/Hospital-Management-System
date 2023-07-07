@@ -1,14 +1,22 @@
 .main{
     padding-top: 7vh;
-    background-image: url("../../../assets/images/admin.jpg");
+    background-image: url("../../../assets/images/department.jpg");
     background-size:cover;
     background-repeat:no-repeat;
     height:91vh;
 }
+h1{
+    padding: 5px;
+    color:  #4881c2;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    padding: 10px;
+}
 .order-card {
     color: #fff;
     font-size: 20px;
-    background:#48b8c2;
+    background:#4889c2;
     padding :15px;
 }
 
