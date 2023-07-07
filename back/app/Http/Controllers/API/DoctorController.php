@@ -24,7 +24,8 @@ class DoctorController extends Controller
 
     public function store(StoreDoctorRequest $request)
     {
-        $doctor = user::create(array_merge($request->validated(), ["role" => 1]));
+
+        $doctor = user::create(array_merge(uploadImage($request, "images/users"), ["role" => 1]));
         return new DoctorResource($doctor);
     }
 
@@ -37,7 +38,7 @@ class DoctorController extends Controller
 
     public function update(UpdateDoctorRequest $request, User $doctor)
     {
-        $doctor->update($request->validated());
+        $doctor->update(uploadImage($request, "images/users"));
         return new DoctorResource($doctor);
     }
 

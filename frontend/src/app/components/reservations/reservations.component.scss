@@ -1,27 +1,167 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 .main {
-    padding-top: 7vh;
+  padding-top: 7vh;
+  background-image: url("../../../assets/images/appinment.jpg");
+  background-size:cover;
+  background-position: right 0px top 0;
+  background-repeat:no-repeat;
+  height:91vh;
+  
 }
 
 
+ .form-box{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 43%;
+  height: 220;
+  padding: 60px 30px ;
+ 
+  background: rgba(0,0,0,0.6);
+  padding-bottom: 5%;
+  padding-top: 50px;
+  border-radius: 15px;
+
+} 
+
+// .form-box{
+// width: 82vw;
+// /* height: 90vh; */
+// background-color:#fff5 ;
+// backdrop-filter: blur(3px);
+// box-shadow: 0 0.4rem 0.8rem #0005;
+// border-radius: 0.8rem;
+// overflow: hidden;
+// }
+h2{
+  padding: 0 0 5px;
+  
+  color:  rgb(225, 249, 250);
+  text-align: center;
+  font-size: 35px;
+  font-weight: 700;
+  
+}
+
+.form-box div label{
+  font-weight: 600;
+  color: #339da7;
+  
+  font-size:20px;
+}
+
+.edit-btn{
+  border: none;
+  outline: none;
+  background: 	#339da7;
+  color: white;
+  padding:10px ;
+  font-size: 16px;
+ cursor: pointer;
+ border-radius: 20px;
+ width: 100%;
+}
+
+.edit-btn:hover{
+ 
+  background-color: #48b8c2;
+
+}
+
+.form-box div input, .form-box div select {
+  width: 100%;
+  margin-bottom: 25px;
+  border: none;
+  outline: none;
+  border:1px solid white ;
+  background: transparent;
+  color: white;
+  height: 40px;
+  font-size: 16px;
+
+
+}
+
+
+/* .form-box div select option {
+  margin: 40px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+} */
+
+select option[value="1"] {
+  background: rgba(11, 157, 168, 0.384);
+}
+
+select option[value="2"] {
+  background: rgba(63, 173, 195, 0.3);
+}
+
+select option[value="3"] {
+  background: rgba(98, 136, 139, 0.3);
+}
+
+
+
+
 /* Style the input field */
-input[type="date"] {
-    appearance: none;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
+// input[type="date"] {
+//     appearance: none;
+//     padding: 0.5rem;
+//     border: 1px solid #ccc;
+//     border-radius: 4px;
+//     font-size: 1rem;
+   
+//   }
   
   /* Style the date picker arrow */
-  input[type="date"]::-webkit-calendar-picker-indicator {
-    background: transparent;
-    cursor: pointer;
-    padding: 0;
-    border: none;
-    margin-left: -0.5rem;
-  }
+  // input[type="date"]::-webkit-calendar-picker-indicator {
+  //   background: transparent;
+  //   cursor: pointer;
+  //   padding: 0;
+  //   border: none;
+  //   margin-left: -0.5rem;
+  // }
   
-  /* Adjust the date format */
-  input[type="date"]::-webkit-datetime-edit {
-    padding: 0;
-  }
+//   /* Adjust the date format */
+  // input[type="date"]::-webkit-datetime-edit {
+  //   padding: 0;
+  // }
+
+
+
+
+// .main {
+//     padding-top: 7vh;
+// }
+
+
+// /* Style the input field */
+// input[type="date"] {
+//     appearance: none;
+//     padding: 0.5rem;
+//     border: 1px solid #ccc;
+//     border-radius: 4px;
+//     font-size: 1rem;
+//   }
+  
+//   /* Style the date picker arrow */
+//   input[type="date"]::-webkit-calendar-picker-indicator {
+//     background: transparent;
+//     cursor: pointer;
+//     padding: 0;
+//     border: none;
+//     margin-left: -0.5rem;
+//   }
+  
+//   /* Adjust the date format */
+//   input[type="date"]::-webkit-datetime-edit {
+//     padding: 0;
+//   }

@@ -1,4 +1,45 @@
-<section class="intro">
+<div class="doctorPage p-5">
+
+
+<!-- <div class="container">
+    <h4 class="mb-3"><b>Available Doctors 12</b></h4>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <img src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
+                    <h5 class="card-title">Ahmed Mahmoud</h5>
+                    <span>Department</span>
+                    <br>
+                    <span>Saturday and Monday from 7 to 10</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  -->
+
+<!-- 
+ <div class="container">
+  <h1 class="mt-5" style="text-align: center;"> Doctors</h1>
+  <br><br>
+  <div>
+      <div class="row" >
+          <div *ngFor="let doctor of doctors  " class="col-md-3 my-3">
+              <div class="card">
+                  <div class="card-body">
+                    <img src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
+                     <h6 class="my-3">{{doctor.name}}</h6>
+                   <p>{{doctor.department.name}}</p>
+                   <p>{{doctor.shift.name}}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</div> -->
+
+<!-- <section class="intro">
   <div class="bg-image h-100">
     <div class="mask d-flex align-items-center h-100" style="background-color: rgba(25, 185, 234,.25);">
       <div class="container">
@@ -38,4 +79,34 @@
       </div>
     </div>
   </div>
-</section>
+</section>  -->
+
+
+<div class="container mt-3 ">
+  <h1>Informatiom About All Doctors</h1>
+<div class="table-responsive row table-contact">
+  <table class="table table-hover mb-0">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">PhoneNumber</th>
+        <th scope="col">Shift</th>
+        <th scope="col">Department</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let doctor of doctors ">
+        <th scope="row">{{doctor.id}}</th>
+        <td>{{doctor.name}}</td>
+        <td>{{doctor.email}}</td>
+        <td>{{doctor. phone_number}}</td>
+        <td>{{doctor.shift.name}}</td>
+        <td>{{doctor.department.name}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>

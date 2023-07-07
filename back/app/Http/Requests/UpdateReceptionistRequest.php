@@ -31,6 +31,7 @@ class UpdateReceptionistRequest extends FormRequest
             "password" => ["required", RulesPassword::min(8)],
             "phone_number" => ["required"],
             "shift_id" => ['required', "exists:shifts,id"],
+            "image" => ["mimes:jpg,jpeg,png"]
         ];
     }
 }

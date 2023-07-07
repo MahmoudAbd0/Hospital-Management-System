@@ -20,7 +20,8 @@ class ReceptionistResource extends JsonResource
             'name' => $this->name,
             "email" => $this->email,
             "phone_number" =>  $this->phone_number,
-            'shift' => new ShiftResource($this->shift)
+            'shift' => new ShiftResource($this->shift),
+            "image" => $this->imageUrl()
         ];
     }
 }

@@ -64,6 +64,8 @@ class User extends Authenticatable
         self::updating(function ($user) {
             if (isset($user["password"])) {
                 $user["password"] = Hash::make($user["password"]);
+            } else {
+                unset($user["password"]);
             }
         });
     }
@@ -76,6 +78,11 @@ class User extends Authenticatable
     function age()
     {
         return now()->diffInYears($this->date_of_birth);
+    }
+
+    public function imageUrl()
+    {
+        return asset("storage/" . $this->image);
     }
 
     public function scopeDoctors($q)
@@ -92,6 +99,8 @@ class User extends Authenticatable
     {
         return $q->where("role", 3);
     }
+
+
 
 
     public function department()

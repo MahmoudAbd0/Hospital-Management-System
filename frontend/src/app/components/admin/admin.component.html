@@ -1,8 +1,11 @@
-<div class="cardBox">
+
+<div class="adminPage">
+<div class="container cardBox1 ">
     <div class="cards">
       <div class="container">
-        <div class="row">
-          <div class="col-md-3">
+        <div class="row d-flex justify-content-around align-items-center ">
+          <div class="col-md-3 mt-5 ">
+
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Number Of Department</h5>
@@ -10,7 +13,9 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-md-3 mt-5">
+
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Number Of Doctors</h5>
@@ -18,15 +23,18 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-md-3 mt-5">
+
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Number Of Patient</h5>
                 <p class="card-text">70</p>
               </div>
+
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 mt-5">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Number Of Rooms</h5>
@@ -34,12 +42,15 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
   </div>
-  
-  <div class="container mt-3">
+
+  <div class="container mt-3 ">
+    <div class=" row table-contact">
+
     <table class="table">
       <thead>
         <tr>
@@ -107,6 +118,7 @@
             <td>
               <button class="btn btn-warning me-3" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editPatient(patient)">Edit</button>
               <button class="btn btn-danger" (click)="deletePatient(patient)">Delete</button>
+
             </td>
           </tr>
   
@@ -152,8 +164,13 @@
               <input [(ngModel)]="selectedDoctor.phone_number" class="form-control">
             </td>
             <td>Doctor</td>
+
+            <!-- <td>
+              <input [(ngModel)]="selectedDoctor.role" class="form-control">
+            </td> -->
             <td>
-              <button class="btn btn-success" (click)="saveDoctor()">Save</button>
+              <button class="btn btn-success " (click)="saveDoctor()">Save</button>
+
               <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
             </td>
           </tr> -->
@@ -260,4 +277,6 @@
       </tbody>
     </table>
   </div>
-  
+
+</div>
+

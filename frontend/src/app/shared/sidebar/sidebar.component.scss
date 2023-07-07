@@ -235,3 +235,10 @@ nav .col-sm-2 svg
     width: calc(100% - 300px);
     height: calc(100vh - 65px);
 }
+
+.account{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
+}

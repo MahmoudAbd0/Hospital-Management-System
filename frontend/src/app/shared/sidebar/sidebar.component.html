@@ -93,17 +93,24 @@
         <div (click)="showSideBar()" class="toggle">
             <i class="fa-solid fa-sliders"></i>
         </div>
-        <div class="search">
+        <!-- <div class="search">
             <label for="">
                 <input type="text" placeholder="Search BY Role">
                 <i class="fa fa-search" aria-hidden="true"></i>
             </label>
+        </div> -->
+        <div class="account ">
+          
+            
+            <div class="user">
+                <img src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="img">
+            
+    
+            </div>
+            <h5 class="pt-2">Yasmen</h5>
+            <a routerLink="/login" class="nav-link " (click)="logout()">Logout</a>
         </div>
-        <a routerLink="/login" class="nav-link" (click)="logout()">Logout</a>
-        <div class="user">
-            <img src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="img">
-
-        </div>
+        
     </div>
 </div>
 
