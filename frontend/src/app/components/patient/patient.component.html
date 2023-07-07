@@ -1,33 +1,8 @@
+<div class="potientPage pt-5">
 <div class="container">
-  <button class="btn btn-primary mb-3" (click)="toggleAddMode()">Add User</button>
-  <ng-container *ngIf="addMode">
-    <form (ngSubmit)="addPatient(newPatientForm.value)" #newPatientForm="ngForm">
-      <div class="row">
-        <div class="col-md-2">
-          <input type="text" class="form-control" placeholder="Name" name="name" ngModel  required>
-        </div>
-        <div class="col-md-2">
-          <input type="email" class="form-control" placeholder="Email" name="email"  ngModel  required>
-        </div>
-        <div class="col-md-2">
-          <input type="password" class="form-control" placeholder="Password" name="password"  ngModel  required>
-        </div>
-        <div class="col-md-2">
-          <input type="text" class="form-control" placeholder="Gender" name="gender" ngModel  required>
-        </div>
-        <div class="col-md-2">
-          <input type="text" class="form-control" placeholder="Date of Birth" name="date_of_birth" ngModel required>
-        </div>
-        <div class="col-md-2">
-          <input type="text" class="form-control" placeholder="Phone" name="phone_number" ngModel required>
-        </div>
-        <div class="col-md-2">
-          <button class="btn btn-success" type="submit">Save</button>
-          <button class="btn btn-secondary" type="button" (click)="toggleAddMode()">Cancel</button>
-        </div>
-      </div>
-    </form>
-  </ng-container>
+
+  <h2>Patients</h2>
+
   <table class="table table-striped mt-5">
     <thead>
       <tr>
@@ -57,4 +32,5 @@
       </tr>
     </tbody>
   </table>
+</div>
 </div>

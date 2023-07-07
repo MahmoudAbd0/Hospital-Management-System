@@ -1,5 +1,141 @@
+.cardBox1{
+    width: 90%;
+    height: 25%;
+}
+
+.card-title{
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+.card-text{
+    text-align: center;
+
+}
+
 .card
 {
     border: none;
     box-shadow: 0px 0px 5px #bdb9b9;
+    
 }
+
+
+
+div .table {
+    width: 82vw;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0.4rem 0.8rem #0005;
+    border-radius: 0.8rem;
+    overflow: hidden;
+}
+
+.adminPage{
+    background-image: url("../../../assets/images/admin.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
+    height:91vh;
+}
+.table-contact{
+    width: 95%;
+    max-height: (89%,0.8rem);
+    // background-color: #fffb;
+    margin: 1rem auto;
+    border-radius: 0.6rem;
+    overflow: auto;
+
+}
+.table-contact::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.table-contact::-webkit-scrollbar-thumb{
+   border-radius: 0.5rem;
+   background-color: #0004;
+   visibility: hidden;
+}
+
+.table-contact:hover::-webkit-scrollbar-thumb{
+ 
+    visibility: visible;
+ }
+ table{
+    width: 100%;
+ }
+
+
+
+td img{
+    width: 50px;
+    height: 50px;
+    margin-right:0.5rem ;
+    border-radius: 50%;
+    vertical-align: middle;
+
+}
+
+table,th,td{
+    border-collapse:collapse ;
+    padding: 1rem;
+
+}
+
+thead th{
+    position: static;
+    top: 0;
+    left: 0;
+    color: #ffffff;
+    background-color: #68c9ce;
+}
+
+
+
+// tbody tr:nth-child(even){
+//     background-color: #0000000b;
+// }
+
+// tbody tr:hover{
+//     background-color: #fff6;
+// }
+
+td button{
+  
+    padding: 5px 35px;
+    display: inline-block;
+    border: solid 1px #fff;
+    border-radius: 30px;
+    color: white;
+    text-transform: capitalize;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+    transition: color 0.3s ease;
+    z-index: 2;
+   
+}
+.btn1{
+    background-color: 	#325f63;
+
+}
+.btn1:hover{
+    background-color: 	#4d8f95;
+
+}
+.btn2{
+    background-color: 	#d4482c;
+
+}
+.btn2:hover{
+    background-color: 	#f15738;
+
+}
+
+tr .edit-mode{
+    background-color:black;
+}
+

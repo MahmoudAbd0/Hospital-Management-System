@@ -1,7 +1,8 @@
+
+<div class="potientPage pt-5">
 <div class="container">
     <br>
-    <div class="col-md-3">
-        <label for="inputRoom" class="form-label">Select Room</label>
+        <div class="col-md-3 form-box ">
         <select class="form-select" aria-label="Default select example">
             <option selected>Select Room</option>
             <option value="1">Room 1</option>
@@ -10,5 +11,9 @@
         </select>
     <br>
     </div>
-    <full-calendar [options]="calendarOptions"></full-calendar>
+    <div >
+        <full-calendar class="cal" [options]="calendarOptions"></full-calendar>
+    </div>
+    
+</div>
 </div>

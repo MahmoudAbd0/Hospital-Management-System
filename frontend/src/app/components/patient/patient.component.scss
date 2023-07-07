@@ -1,0 +1,66 @@
+h2{
+  padding: 5px;
+  color: rgb(24, 84, 148);
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  padding-right: 50px;
+}
+
+div .table {
+    width: 77vw;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0.4rem 0.8rem #0005;
+    border-radius: 0.8rem;
+    overflow: hidden;
+  }
+  
+  .potientPage{
+    background-image: url("../../../assets/images/patient.png");
+    background-size:cover;
+    background-repeat:no-repeat;
+    height:91vh;
+  }
+  .table-contact{
+    width: 95%;
+    max-height: (89%,0.8rem);
+    // background-color: #fffb;
+    margin: 1rem auto;
+    border-radius: 0.6rem;
+    overflow: auto;
+  
+  }
+  .table-contact::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+  
+  .table-contact::-webkit-scrollbar-thumb{
+   border-radius: 0.5rem;
+   background-color: #0004;
+   visibility: hidden;
+  }
+  
+  .table-contact:hover::-webkit-scrollbar-thumb{
+  
+    visibility: visible;
+  }
+  table{
+    width: 100%;
+  }
+  
+  
+  table,th,td{
+    border-collapse:collapse ;
+    padding: 1rem;
+  
+  }
+  
+  thead th{
+    position: static;
+    top: 0;
+    left: 0;
+    color: #ffffff;
+    background-color: #2481b7;
+  }
+  
