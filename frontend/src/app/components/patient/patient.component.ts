@@ -18,6 +18,8 @@ export class PatientComponent implements OnInit {
   constructor(private _patientService: PatientService) {}
 
   ngOnInit() {
+
+    
     this.drLogged = localStorage.getItem('role') == '1';
     const id = Number(localStorage.getItem('id'));
     // console.log(id);
@@ -50,5 +52,7 @@ export class PatientComponent implements OnInit {
         this.patients.push(newPatient);
         this.toggleAddMode();
       });
+
+      console.log(patientData)
   }
 }

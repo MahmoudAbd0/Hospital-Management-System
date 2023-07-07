@@ -78,7 +78,7 @@
             Doctor
           </td>
           <td>
-            <button class="btn btn-warning me-3" (click)="editDoctor(doctor)">Edit</button>
+            <button class="btn btn-warning me-3" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editDoctor(doctor)">Edit</button>
             <button class="btn btn-danger" (click)="deleteDoctor(doctor)">Delete</button>
           </td>
         </tr>
@@ -97,7 +97,7 @@
                 Receptionist
             </td>
             <td>
-              <button class="btn btn-warning me-3" (click)="editReceptionist(receptionist)">Edit</button>
+              <button class="btn btn-warning me-3" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editReceptionist(receptionist)">Edit</button>
               <button class="btn btn-danger" (click)="deleteReceptionist(receptionist)">Delete</button>
             </td>
           </tr>
@@ -116,15 +116,43 @@
                 Patient
             </td>
             <td>
-              <button class="btn btn1 me-3" (click)="editPatient(patient)">Edit</button>
-              <button class="btn btn2" (click)="deletePatient(patient)">Delete</button>
+              <button class="btn btn-warning me-3" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editPatient(patient)">Edit</button>
+              <button class="btn btn-danger" (click)="deletePatient(patient)">Delete</button>
 
             </td>
           </tr>
   
         <ng-container *ngIf="editMode && selectedDoctor">
-
-          <tr  class="edit-mode">
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit {{selectedDoctor.name}} Data</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <td>
+                    <label>Name</label>
+                    <input [(ngModel)]="selectedDoctor.name" class="form-control">
+                  </td>
+                  <td></td>
+                  <td>
+                    <label>Email</label>
+                    <input [(ngModel)]="selectedDoctor.email" class="form-control">
+                  </td>
+                  <td>
+                    <label>Phone Numbers</label>
+                    <input [(ngModel)]="selectedDoctor.phone_number" class="form-control">
+                  </td>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="saveDoctor()" >Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <tr>
             <td>
               <input [(ngModel)]="selectedDoctor.name" class="form-control">
             </td>
@@ -145,11 +173,40 @@
 
               <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
             </td>
-          </tr>
+          </tr> -->
         </ng-container>
 
         <ng-container *ngIf="editMode && selectedReceptionist">
-            <tr>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit {{selectedReceptionist.name}} Data</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <td>
+                    <label>Name</label>
+                    <input [(ngModel)]="selectedReceptionist.name" class="form-control">
+                  </td>
+                  <td></td>
+                  <td>
+                    <label>Email</label>
+                    <input [(ngModel)]="selectedReceptionist.email" class="form-control">
+                  </td>
+                  <td>
+                    <label>Phone Numbers</label>
+                    <input [(ngModel)]="selectedReceptionist.phone_number" class="form-control">
+                  </td>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="saveReceptionist()" >Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+            <!-- <tr>
               <td>
                 <input [(ngModel)]="selectedReceptionist.name" class="form-control">
               </td>
@@ -160,16 +217,45 @@
               <td>
                 <input [(ngModel)]="selectedReceptionist.phone_number" class="form-control">
               </td>
-              <td>Doctor</td>
+              <td>Receptionist</td>
               <td>
                 <button class="btn btn-success" (click)="saveReceptionist()">Save</button>
                 <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
               </td>
-            </tr>
+            </tr> -->
           </ng-container>
 
           <ng-container *ngIf="editMode && selectedPatient">
-            <tr>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit {{selectedPatient.name}} Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <td>
+                      <label>Name</label>
+                      <input [(ngModel)]="selectedPatient.name" class="form-control">
+                    </td>
+                    <td></td>
+                    <td>
+                      <label>Email</label>
+                      <input [(ngModel)]="selectedPatient.email" class="form-control">
+                    </td>
+                    <td>
+                      <label>Phone Numbers</label>
+                      <input [(ngModel)]="selectedPatient.phone_number" class="form-control">
+                    </td>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="savePatient()" >Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <tr>
               <td>
                 <input [(ngModel)]="selectedPatient.name" class="form-control">
               </td>
@@ -180,12 +266,12 @@
               <td>
                 <input [(ngModel)]="selectedPatient.phone_number" class="form-control">
               </td>
-              <td>Doctor</td>
+              <td>Patient</td>
               <td>
                 <button class="btn btn-success" (click)="savePatient()">Save</button>
                 <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
               </td>
-            </tr>
+            </tr> -->
           </ng-container>
 
       </tbody>

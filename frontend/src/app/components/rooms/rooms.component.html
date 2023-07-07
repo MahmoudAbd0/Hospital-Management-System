@@ -1,19 +1,31 @@
+<div class="main">
+    <div class="container">
+        <button class="btn btn-primary mb-3" (click)="toggleAddMode()">Add Room</button>
+        <ng-container *ngIf="addMode">
+            <form (submit)="addRoom()">
+                <div class="form-group">
+                  <label for="name">Name:</label>
+                  <input type="text" class="form-control" id="name" [(ngModel)]="newRoom.name" name="name" required>
+                </div>
+                <div class="form-group">
+                  <label for="description">Description:</label>
+                  <input type="text" class="form-control" id="description" [(ngModel)]="newRoom.description" name="description">
+                </div>
+                <button type="submit" class="btn btn-success">Save</button>
+                <button type="button" class="btn btn-secondary" (click)="toggleAddMode()">Cancel</button>
+              </form>
+          </ng-container>
+        <div class="row">
+            <div *ngFor="let room of rooms" class="col-md-4 col-xl-3">
+                <div class="card bg-c-pink order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Room No.</h6>
+                        <h2 class="text-right">{{room.name}}</h2>
+                        <p class="m-b-0">{{ room.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div class="potientPage pt-5">
-<div class="container">
-    <br>
-        <div class="col-md-3 form-box ">
-        <select class="form-select" aria-label="Default select example">
-            <option selected>Select Room</option>
-            <option value="1">Room 1</option>
-            <option value="2">Room 2</option>
-            <option value="3">Room 3</option>
-        </select>
-    <br>
-    </div>
-    <div >
-        <full-calendar class="cal" [options]="calendarOptions"></full-calendar>
-    </div>
-    
-</div>
-</div>
