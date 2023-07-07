@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 import { PatientService } from 'src/app/services/patient.service';
+import { NewPatientInterface } from 'src/app/interfaces/new-patient-interface';
 
 @Component({
   selector: 'app-patient',
@@ -11,6 +12,8 @@ export class PatientComponent implements OnInit {
   patients: any[] = [];
   id: any;
   drLogged = false;
+  addMode = false;
+  
 
   constructor(private _patientService: PatientService) {}
 
@@ -29,5 +32,23 @@ export class PatientComponent implements OnInit {
         // console.log(this.patients);
       });
     }
+  }
+    toggleAddMode(): void {
+      this.addMode = !this.addMode;
+    }
+  
+    addPatient(patientData: NewPatientInterface): void {
+      const newPatient: NewPatientInterface = {
+        name: patientData.name,
+        email: patientData.email,
+        password: patientData.password,
+        gender: patientData.gender,
+        date_of_birth: new Date(patientData.date_of_birth).toISOString(),
+        phone_number: patientData.phone_number
+      };
+      this._patientService.createPatient(newPatient).subscribe(newPatient => {
+        this.patients.push(newPatient);
+        this.toggleAddMode();
+      });
   }
 }
