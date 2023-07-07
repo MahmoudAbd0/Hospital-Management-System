@@ -20,7 +20,7 @@ export class PatientService {
   }
 
 
-  createPatient(data: patientModel): Observable<patientModel> {
+  // createPatient(data: patientModel): Observable<patientModel> {
 
   createPatient(data: NewPatientInterface): Observable<patientModel> {
 
@@ -35,4 +35,3 @@ export class PatientService {
     return this._httpClient.delete<void>(`${this.apiUrl}/patients/${id}`);
   }
 }
-
