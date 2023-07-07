@@ -30,3 +30,4 @@ export class DoctorService {
     return this._httpClinet.delete<void>(`${this.apiUrl}/doctors/${id}`);
   }
 }
+
