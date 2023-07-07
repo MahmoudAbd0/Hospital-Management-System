@@ -1,0 +1,26 @@
+.potientPage{
+    background-image: url("../../../assets/images/admin.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
+    height:91vh;
+  }
+  .cal{
+    height: 495px;
+    background-color: rgb(225, 239, 252);
+    border-radius: 15px;
+    padding: 15px;
+  }
+
+  select {
+    width: 100%;
+    margin-bottom: 25px;
+    border: none;
+    outline: none;
+    border:1px solid rgb(27, 123, 220) ;
+    background: transparent;
+    color: rgb(13, 119, 138);
+    height: 40px;
+    font-size: 16px;
+  
+  
+  }

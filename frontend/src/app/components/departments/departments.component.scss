@@ -1,13 +1,20 @@
 .main{
     padding-top: 7vh;
+    background-image: url("../../../assets/images/admin.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
+    height:91vh;
 }
 .order-card {
     color: #fff;
+    font-size: 20px;
+    background:#48b8c2;
+    padding :15px;
 }
 
-.bg-c-blue {
-    background: linear-gradient(45deg,#4099ff,#73b4ff);
-}
+// .bg-c-blue {
+//     background: linear-gradient(45deg,#4099ff,#73b4ff);
+// }
 
 .bg-c-green {
     background: linear-gradient(45deg,#2ed8b6,#59e0c5);
