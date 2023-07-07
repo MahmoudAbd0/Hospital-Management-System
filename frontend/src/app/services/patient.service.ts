@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { patientModel } from '../models/doctors/patientModel.model';
+import { NewPatientInterface } from '../interfaces/new-patient-interface';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,11 @@ export class PatientService {
     return this._httpClient.get(`http://localhost:8000/api/doctors/${id}/appointments`);
   }
 
+
   createPatient(data: patientModel): Observable<patientModel> {
+
+  createPatient(data: NewPatientInterface): Observable<patientModel> {
+
     return this._httpClient.post<patientModel>(`${this.apiUrl}/patients`, data);
   }
 
