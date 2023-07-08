@@ -27,11 +27,11 @@ class UpdateDoctorRequest extends FormRequest
         return [
             'name' => ['required'],
             "email" => ["required", "email", "unique:users,email," . $this->doctor->id],
-            "password" => ["required", Password::min(8)],
+            "password" => ["nullable", Password::min(8)],
             "phone_number" => ["required"],
             "shift_id" => ['required', "exists:shifts,id"],
             'department_id' => ['required', "exists:departments,id"],
-            "image" => ["mimes:jpg,jpeg,png"]
+            "image" => ["nullable", "mimes:jpg,jpeg,png"]
         ];
     }
 }

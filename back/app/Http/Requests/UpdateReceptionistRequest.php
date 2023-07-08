@@ -28,10 +28,10 @@ class UpdateReceptionistRequest extends FormRequest
         return [
             'name' => ['required'],
             "email" => ["required", "email", "unique:users,email," . $this->receptionist->id],
-            "password" => ["required", RulesPassword::min(8)],
+            "password" => ["nullable", RulesPassword::min(8)],
             "phone_number" => ["required"],
             "shift_id" => ['required', "exists:shifts,id"],
-            "image" => ["mimes:jpg,jpeg,png"]
+            "image" => ["nullable", "mimes:jpg,jpeg,png"]
         ];
     }
 }
