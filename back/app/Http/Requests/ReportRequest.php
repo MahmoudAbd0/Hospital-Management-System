@@ -31,7 +31,7 @@ class ReportRequest extends FormRequest
             'diagnosis' => 'required',
             'description' => 'required',
             // 'files' => 'required',
-            'appointment_id' => 'required'
+            'appointment_id' => 'required|exists:appointments,id'
         ];
     }
 

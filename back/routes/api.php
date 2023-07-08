@@ -52,7 +52,7 @@ Route::apiResource('departments', App\Http\Controllers\API\DepartmentController:
 Route::apiResource('bookings', App\Http\Controllers\API\BookingController::class);
 
 Route::apiResource('reports', App\Http\Controllers\API\ReportController::class);
-Route::post('reports/{id}',[ReportController::class,'store']);
+// Route::post('reports/{id}',[ReportController::class,'store']);
 
 Route::post('login',[AuthController::class,'login']);
 
