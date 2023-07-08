@@ -12,11 +12,15 @@ use App\Http\Controllers\API\PatientController;
 <<<<<<< HEAD
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\API\BookingController;
+<<<<<<< HEAD
 =======
 use App\Http\Controllers\API\ReceptionistController;
 use App\Http\Controllers\API\DoctorController;
 use App\Http\Middleware\UploadUserImage;
 >>>>>>> 233e7fc42da76420f312b1a3f9a1dfd7d24dfdde
+=======
+use App\Http\Controllers\API\ReportController;
+>>>>>>> 34842cc3111efa50ad32f7128f70f88ddd622463
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +53,9 @@ Route::apiResource('departments', App\Http\Controllers\API\DepartmentController:
 
 
 Route::apiResource('bookings', App\Http\Controllers\API\BookingController::class);
+
+Route::apiResource('reports', App\Http\Controllers\API\ReportController::class);
+Route::post('reports/{id}',[ReportController::class,'store']);
 
 Route::post('login',[AuthController::class,'login']);
 =======
