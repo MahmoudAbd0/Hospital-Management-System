@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
-class DepartmentRequest extends FormRequest
+class ReportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,10 +28,12 @@ class DepartmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:departments',
+            'diagnosis' => 'required',
+            'description' => 'required',
+            // 'files' => 'required',
+            'appointment_id' => 'required|exists:appointments,id'
         ];
     }
-
 
     protected function failedValidation(Validator $validator)
     {

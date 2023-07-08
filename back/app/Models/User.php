@@ -112,4 +112,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Shift::class, 'shift_id');
     }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+   
 }

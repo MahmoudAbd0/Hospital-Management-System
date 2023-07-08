@@ -16,8 +16,11 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
-        return response()->json($departments);
+        $results = Department::with('doctors')
+        ->get();
+
+        return response()->json($results);
+        
 
     }
 
@@ -39,9 +42,12 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Department $department)
+    public function show($id)
     {
+        $department = Department::with('doctors')->findOrFail($id);
+
         return response()->json($department);
+
     }
 
     /**
@@ -65,8 +71,7 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        // $department->delete();
-        // return response()->json(['message' => 'Room deleted']);
+       
         $department = Department::findOrFail($id);
         $department->delete();
         return response()->json(['message' => 'Department deleted']);
