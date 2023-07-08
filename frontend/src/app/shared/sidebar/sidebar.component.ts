@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+
   constructor()
   {
 
@@ -19,6 +20,7 @@ export class SidebarComponent implements OnInit {
     main?.classList.toggle("active");
   }
 
+  username = localStorage.getItem('name');
   loggedIn = false;
   adminLogged = false;
   drLogged = false;
@@ -29,6 +31,7 @@ export class SidebarComponent implements OnInit {
     this.adminLogged = localStorage.getItem('role') == '3';
     this.receptionistLogged = localStorage.getItem('role') == '2';
     this.drLogged = localStorage.getItem('role') == '1';
+
   }
 
   logout() {
