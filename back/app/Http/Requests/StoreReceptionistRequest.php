@@ -30,7 +30,7 @@ class StoreReceptionistRequest extends FormRequest
             "password" => ["required", Password::min(8)],
             "phone_number" => ["required"],
             "shift_id" => ['required', "exists:shifts,id"],
-            "image" => ["mimes:jpg,jpeg,png"]
+            "image" => ["nullable", "mimes:jpg,jpeg,png"]
         ];
     }
 }
