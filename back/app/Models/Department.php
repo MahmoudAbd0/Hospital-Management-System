@@ -13,7 +13,7 @@ class Department extends Model
     ];
 
 
-    public function users()
+    public function doctors()
     {
         return $this->hasMany(User::class, 'department_id');
        
