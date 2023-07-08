@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', result.token);
           localStorage.setItem('role', result.user.role);
           localStorage.setItem('id', result.user.id);
+          localStorage.setItem('name', result.user.name);
           console.log(localStorage.getItem('id'));
           if(localStorage.getItem('role') == '3') {
             console.log('admin')

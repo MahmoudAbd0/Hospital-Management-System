@@ -22,7 +22,7 @@
           <select class="form-control" name="gender" ngModel required>
             <option selected disabled value="">Select Gender</option>
             <option value=1>Female</option>
-            <option value=>Male</option>
+            <option value=2>Male</option>
           </select>
           <div class="text-danger" *ngIf="newPatientForm.controls['gender'].touched && newPatientForm.controls['gender'].hasError('required')">Gender is required</div>
         </div>
