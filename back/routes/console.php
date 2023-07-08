@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,8 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
+Artisan::command('pass', function () {
+
+    User::where("id", "!=", -1)->update(["password" => Hash::make('12345678')]);
+    dump(1111);
 })->purpose('Display an inspiring quote');

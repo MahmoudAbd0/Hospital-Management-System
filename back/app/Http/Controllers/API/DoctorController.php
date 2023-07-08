@@ -46,6 +46,7 @@ class DoctorController extends Controller
     public function destroy(User $doctor)
     {
         $doctor->delete();
+
         return response()->json(
             [
                 "data" => [
@@ -62,12 +63,11 @@ class DoctorController extends Controller
         if (is_null($appointments)) {
             return response()->json(['success' => 'false', 'message' => 'Invalid_DoctorID']);
         } else {
-            // $appointments = Appointment::where('doctor_id',$id)->get();
+
             $appointments = Appointment::where('doctor_id', $id)
-
-                ->with('patient:id,name,email,gender,date_of_birth,phone_number','doctor:id,name')
-
+                ->with('patient:id,name,email,gender,date_of_birth,phone_number', 'doctor:id,name')
                 ->get(['id', 'time', 'patient_id', 'doctor_id']);
+
             return response()->json(['success' => 'Success', 'appointments' => $appointments]);
         }
     }
