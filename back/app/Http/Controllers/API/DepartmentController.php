@@ -18,6 +18,7 @@ class DepartmentController extends Controller
     {
         $departments = Department::all();
         return response()->json($departments);
+
     }
 
     /**
@@ -63,7 +64,7 @@ class DepartmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   
+    {
         // $department->delete();
         // return response()->json(['message' => 'Room deleted']);
         $department = Department::findOrFail($id);

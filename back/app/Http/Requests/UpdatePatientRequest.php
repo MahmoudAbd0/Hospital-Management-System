@@ -28,10 +28,10 @@ class UpdatePatientRequest extends FormRequest
         return  [
             "name" => ["required"],
             "email" => ["required", "email", "unique:users,email," . $this->patient->id],
-            "password" => ["required", Password::min(8)],
+            "password" => ["nullable", Password::min(8)],
             "gender" => ["required", "in:0,1"],
             "date_of_birth" => ["required", "date"],
-            "phone_number" => ["required"]
+            "phone_number" => ["required"],
         ];
     }
 }

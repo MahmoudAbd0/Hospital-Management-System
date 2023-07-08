@@ -17,6 +17,7 @@ class Appointment extends Model
     return $this->belongsTo(User::class, 'patient_id');
 
 }
+<<<<<<< HEAD
 
 public function report()
 {
@@ -27,4 +28,10 @@ public function report()
 
 
 
+=======
+public function doctor()
+{
+    return $this->belongsTo(User::class, 'doctor_id');
+}
+>>>>>>> 233e7fc42da76420f312b1a3f9a1dfd7d24dfdde
 }

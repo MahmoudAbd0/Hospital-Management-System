@@ -9,8 +9,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RoomController;
 use App\Http\Controllers\API\DepartmentController;
 use App\Http\Controllers\API\PatientController;
+<<<<<<< HEAD
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\API\BookingController;
+=======
+use App\Http\Controllers\API\ReceptionistController;
+use App\Http\Controllers\API\DoctorController;
+use App\Http\Middleware\UploadUserImage;
+>>>>>>> 233e7fc42da76420f312b1a3f9a1dfd7d24dfdde
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +35,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('patients', PatientController::class);
 Route::apiResource('doctors', DoctorController::class);
+Route::apiResource('receptionists', ReceptionistController::class);
 
 Route::get('doctors/{id}/appointments',[DoctorController::class,'appointments']);
 
@@ -37,10 +44,15 @@ Route::apiResource('appointments', AppointmentController::class);
 
 Route::apiResource('rooms', 'App\Http\Controllers\API\RoomController');
 Route::apiResource('departments', App\Http\Controllers\API\DepartmentController::class);
+<<<<<<< HEAD
 
 
 
 Route::apiResource('bookings', App\Http\Controllers\API\BookingController::class);
 
 Route::post('login',[AuthController::class,'login']);
+=======
+Route::post('login', [AuthController::class, 'login']);
+
+>>>>>>> 233e7fc42da76420f312b1a3f9a1dfd7d24dfdde
 // Route::post('register',[AuthController::class,'register']);

@@ -1,154 +1,282 @@
 
-<div class="cardBox">
+<div class="adminPage">
+<div class="container cardBox1 ">
     <div class="cards">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Number Of Department</h5>
-                            <p class="card-text">20</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Number Of Doctors</h5>
-                            <p class="card-text">40</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Number Of Patient</h5>
-                            <p class="card-text">70</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Number Of Rooms</h5>
-                            <p class="card-text">50</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row d-flex justify-content-around align-items-center ">
+          <div class="col-md-3 mt-5 ">
+
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Number Of Department</h5>
+                <p class="card-text">20</p>
+              </div>
             </div>
+          </div>
+
+          <div class="col-md-3 mt-5">
+
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Number Of Doctors</h5>
+                <p class="card-text">40</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 mt-5">
+
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Number Of Patient</h5>
+                <p class="card-text">70</p>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-3 mt-5">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Number Of Rooms</h5>
+                <p class="card-text">50</p>
+              </div>
+            </div>
+          </div>
+
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
+  <div class="container mt-3 ">
+    <div class=" row table-contact">
 
-<div class="container mt-3">
     <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Role</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Aya</td>
-                <td>
-                    <img style="width: 50px;" src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                </td>
-                <td>
-                    aya@gmail.com
-                </td>
-                <td>
-                    010212211121
-                </td>
-                <td>
-                    Doctor
-                </td>
-                <td>
-                    <button class="btn btn-warning me-3">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Aya</td>
-                <td>
-                    <img style="width: 50px;" src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                </td>
-                <td>
-                    aya@gmail.com
-                </td>
-                <td>
-                    010212211121
-                </td>
-                <td>
-                    Doctor
-                </td>
-                <td>
-                    <button class="btn btn-warning me-3">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Aya</td>
-                <td>
-                    <img style="width: 50px;" src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                </td>
-                <td>
-                    aya@gmail.com
-                </td>
-                <td>
-                    010212211121
-                </td>
-                <td>
-                    Doctor
-                </td>
-                <td>
-                    <button class="btn btn-warning me-3">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Aya</td>
-                <td>
-                    <img style="width: 50px;" src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                </td>
-                <td>
-                    aya@gmail.com
-                </td>
-                <td>
-                    010212211121
-                </td>
-                <td>
-                    Doctor
-                </td>
-                <td>
-                    <button class="btn btn-warning me-3">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Aya</td>
-                <td>
-                    <img style="width: 50px;" src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
-                </td>
-                <td>
-                    aya@gmail.com
-                </td>
-                <td>
-                    010212211121
-                </td>
-                <td>
-                    Doctor
-                </td>
-                <td>
-                    <button class="btn btn-warning me-3">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Role</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let doctor of doctors">
+          <td>{{ doctor.name }}</td>
+          <td>
+            <img style="width: 50px;" src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
+          </td>
+          <td>
+            {{ doctor.email }}
+          </td>
+          <td>
+            {{ doctor.phone_number }}
+          </td>
+          <td>
+            Doctor
+          </td>
+          <td>
+            <button class="btn btn-warning me-3" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editDoctor(doctor)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteDoctor(doctor)">Delete</button>
+          </td>
+        </tr>
+        <tr *ngFor="let receptionist of receptionists">
+            <td>{{ receptionist.name }}</td>
+            <td>
+              <img style="width: 50px;" src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
+            </td>
+            <td>
+              {{ receptionist.email }}
+            </td>
+            <td>
+              {{ receptionist.phone_number }}
+            </td>
+            <td>
+                Receptionist
+            </td>
+            <td>
+              <button class="btn btn-warning me-3" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editReceptionist(receptionist)">Edit</button>
+              <button class="btn btn-danger" (click)="deleteReceptionist(receptionist)">Delete</button>
+            </td>
+          </tr>
+          <tr *ngFor="let patient of patients">
+            <td>{{ patient.name }}</td>
+            <td>
+              <img style="width: 50px;" src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
+            </td>
+            <td>
+              {{ patient.email }}
+            </td>
+            <td>
+              {{ patient.phone_number }}
+            </td>
+            <td>
+                Patient
+            </td>
+            <td>
+              <button class="btn btn-warning me-3" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editPatient(patient)">Edit</button>
+              <button class="btn btn-danger" (click)="deletePatient(patient)">Delete</button>
+
+            </td>
+          </tr>
+  
+        <ng-container *ngIf="editMode && selectedDoctor">
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit {{selectedDoctor.name}} Data</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <td>
+                    <label>Name</label>
+                    <input [(ngModel)]="selectedDoctor.name" class="form-control">
+                  </td>
+                  <td></td>
+                  <td>
+                    <label>Email</label>
+                    <input [(ngModel)]="selectedDoctor.email" class="form-control">
+                  </td>
+                  <td>
+                    <label>Phone Numbers</label>
+                    <input [(ngModel)]="selectedDoctor.phone_number" class="form-control">
+                  </td>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="saveDoctor()" >Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <tr>
+            <td>
+              <input [(ngModel)]="selectedDoctor.name" class="form-control">
+            </td>
+            <td></td>
+            <td>
+              <input [(ngModel)]="selectedDoctor.email" class="form-control">
+            </td>
+            <td>
+              <input [(ngModel)]="selectedDoctor.phone_number" class="form-control">
+            </td>
+            <td>Doctor</td> -->
+
+            <!-- <td>
+              <input [(ngModel)]="selectedDoctor.role" class="form-control">
+            </td>
+            <td>
+              <button class="btn btn-success " (click)="saveDoctor()">Save</button>
+
+              <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+            </td>
+          </tr> -->
+        </ng-container>
+
+        <ng-container *ngIf="editMode && selectedReceptionist">
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit {{selectedReceptionist.name}} Data</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <td>
+                    <label>Name</label>
+                    <input [(ngModel)]="selectedReceptionist.name" class="form-control">
+                  </td>
+                  <td></td>
+                  <td>
+                    <label>Email</label>
+                    <input [(ngModel)]="selectedReceptionist.email" class="form-control">
+                  </td>
+                  <td>
+                    <label>Phone Numbers</label>
+                    <input [(ngModel)]="selectedReceptionist.phone_number" class="form-control">
+                  </td>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="saveReceptionist()" >Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+            <!-- <tr>
+              <td>
+                <input [(ngModel)]="selectedReceptionist.name" class="form-control">
+              </td>
+              <td></td>
+              <td>
+                <input [(ngModel)]="selectedReceptionist.email" class="form-control">
+              </td>
+              <td>
+                <input [(ngModel)]="selectedReceptionist.phone_number" class="form-control">
+              </td>
+              <td>Receptionist</td>
+              <td>
+                <button class="btn btn-success" (click)="saveReceptionist()">Save</button>
+                <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+              </td>
+            </tr> -->
+          </ng-container>
+
+          <ng-container *ngIf="editMode && selectedPatient">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit {{selectedPatient.name}} Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <td>
+                      <label>Name</label>
+                      <input [(ngModel)]="selectedPatient.name" class="form-control">
+                    </td>
+                    <td></td>
+                    <td>
+                      <label>Email</label>
+                      <input [(ngModel)]="selectedPatient.email" class="form-control">
+                    </td>
+                    <td>
+                      <label>Phone Numbers</label>
+                      <input [(ngModel)]="selectedPatient.phone_number" class="form-control">
+                    </td>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="savePatient()" >Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <tr>
+              <td>
+                <input [(ngModel)]="selectedPatient.name" class="form-control">
+              </td>
+              <td></td>
+              <td>
+                <input [(ngModel)]="selectedPatient.email" class="form-control">
+              </td>
+              <td>
+                <input [(ngModel)]="selectedPatient.phone_number" class="form-control">
+              </td>
+              <td>Patient</td>
+              <td>
+                <button class="btn btn-success" (click)="savePatient()">Save</button>
+                <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+              </td>
+            </tr> -->
+          </ng-container>
+
+      </tbody>
     </table>
+  </div>
+
 </div>
+

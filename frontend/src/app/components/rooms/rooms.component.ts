@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CalendarOptions } from '@fullcalendar/core';
-import dayGridPlugin from '@fullcalendar/daygrid';
-
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-rooms',
@@ -9,37 +7,55 @@ import dayGridPlugin from '@fullcalendar/daygrid';
   styleUrls: ['./rooms.component.scss']
 })
 export class RoomsComponent implements OnInit {
-    roomsEvents: any = [
-      { title: 'Avaliable', date: '2023-06-28', color: '0000FF' },
-      { title: 'Not Avaliable', date: '2023-06-29', color: '#FF0000' }
-    ]
-    calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth',
-    plugins: [dayGridPlugin],
-    events: this.roomsEvents,
-    eventClick: this.handleDateClick.bind(this)
+  rooms: any[] = [];
+  addMode: boolean = false;
+  newRoom: any = {
+    name: '',
+    description: ''
   };
 
-  
-  handleDateClick(args:any){
-    if (args.event._def.title == "Avaliable"){
-      console.log('Avaliable')
-    } 
-    else {
-      console.log('not')
-    }
-    console.log(args.event._def.title)
+  constructor(private httpClient: HttpClient) { }
 
+  ngOnInit(): void {
+    this.fetchRooms();
   }
 
-  ngOnInit(): void{
-
-    this.roomsEvents.forEach((e: { [x:string]: string; }) => {
-      if (e['title'] == 'Avaliable') {
-        console.log('Hello')
+  fetchRooms(): void {
+    this.httpClient.get<any[]>('http://localhost:8000/api/rooms').subscribe(
+      response => {
+        this.rooms = response;
+      },
+      error => {
+        console.error('Error fetching rooms:', error);
       }
-    })
+    );
   }
-  
 
+  toggleAddMode(): void {
+    this.addMode = !this.addMode;
+  }
+
+  addRoom(): void {
+    this.httpClient.post('http://localhost:8000/api/rooms', this.newRoom).subscribe(
+      response => {
+        // Reset the newRoom object and fetch the updated list of rooms
+        this.newRoom = {
+          name: '',
+          description: ''
+        };
+        this.fetchRooms();
+      },
+      error => {
+        console.error('Error adding room:', error);
+        if (error.error && error.error.message) {
+          // Display the server-side validation error message
+          alert(error.error.message);
+        } else {
+          // Display a generic error message
+          alert('An error occurred while adding the room.');
+        }
+      }
+    );
+  }
 }
+

@@ -9,23 +9,31 @@ import { DepartmentsComponent } from './components/departments/departments.compo
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-=======
+import { PatientComponent } from './components/patient/patient.component';
+import { DoctorAppointmentsComponent } from './components/doctor-appointments/doctor-appointments.component';
+import { HomeComponent } from './components/home/home.component';
+import { AdminGuard } from './auth.guard';
+
 
 const routes: Routes = [
+  {path: "", component: HomeComponent},
   {
-    path: 'admin',
+    path: 'dashboard',
     component: DashboardComponent,
     children: [
-    {path:"admin", component:AdminComponent},
-    {path:"doctor", component:DoctorComponent},
-    {path:"receptionist", component:ReceptionistComponent},
-    {path:"reservations", component:ReservationsComponent},
-    {path: "room-reservations", component:RoomReservationsComponent},
-    {path: "departments", component:DepartmentsComponent},
-    {path: "rooms", component:RoomsComponent}
-    ]
+    {path:"admin", component:AdminComponent, canActivate:[AdminGuard]},
+    {path:"doctor", component:DoctorComponent, canActivate:[AdminGuard]},
+    {path:"doctor/appointments", component:DoctorAppointmentsComponent, canActivate:[AdminGuard]},
+    {path:"patient", component:PatientComponent, canActivate:[AdminGuard]},
+    {path:"receptionist", component:ReceptionistComponent, canActivate:[AdminGuard]},
+    {path:"reservations", component:ReservationsComponent, canActivate:[AdminGuard]},
+    {path: "room-reservations", component:RoomReservationsComponent, canActivate:[AdminGuard]},
+    {path: "departments", component:DepartmentsComponent, canActivate:[AdminGuard]},
+    {path: "rooms", component:RoomsComponent, canActivate:[AdminGuard]}
+    ],
+    canActivate:[AdminGuard]
   },
-  {path: "", component:LoginComponent}
+  {path: "login", component:LoginComponent}
 
 ]
 

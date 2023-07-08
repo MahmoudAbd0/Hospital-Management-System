@@ -1,0 +1,53 @@
+<!--
+<div class="container">
+  <h1 class="mt-5" style="text-align: center;"> Doctors</h1>
+  <br><br>
+  <div>
+      <div class="row" >
+          <div *ngFor="let doctor of doctors  " class="col-md-3 my-3">
+              <div class="card">
+                  <div class="card-body">
+                    <img src="../../../assets/images/user_ahmed@gmail.com.jpeg" alt="">
+                     <h6 class="my-3">{{doctor.name}}</h6>
+                   <p>{{doctor.department.name}}</p>
+                   <p>{{doctor.shift.name}}</p>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</div>
+ -->
+ <div class="potientPage pt-5">
+<div class="container">
+  <h2>Doctors for Patients</h2>
+  <table class="table table-striped mt-5">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Doctor</th>
+        <th scope="col">patient</th>
+        <th scope="col">Time</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="drLogged">
+      <tr *ngFor=" let appointment of appointments">
+        <th scope="row">{{appointment.id}}</th>
+        <td>{{appointment.doctor.name}}</td>
+        <td>{{appointment.patient.name}}</td>
+        <td>{{appointment.time}}</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="!drLogged">
+      <tr *ngFor=" let appointment of appointments">
+        <th scope="row">{{appointment.id}}</th>
+        <td>{{appointment.doctor}}</td>
+        <td>{{appointment.patient}}</td>
+        <td>{{appointment.time}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

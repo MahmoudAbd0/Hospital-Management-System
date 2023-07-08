@@ -31,6 +31,7 @@ class UpdateDoctorRequest extends FormRequest
             "phone_number" => ["required"],
             "shift_id" => ['required', "exists:shifts,id"],
             'department_id' => ['required', "exists:departments,id"],
+            "image" => ["mimes:jpg,jpeg,png"]
         ];
     }
 }
